@@ -1,15 +1,26 @@
-package com.mistified.mistified;
+package com.mistified;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Mistified extends ApplicationAdapter {
+import Screens.CreditScreen;
+import Screens.LoadingScreen;
+import Screens.MainGameScreen;
+import Screens.MainMenuScreen;
+
+public class Mistified extends Game {
 	SpriteBatch batch;
 	Texture img;
 	
+	private LoadingScreen loadingScrene;
+	private MainMenuScreen mainMenuScreen;
+	private MainGameScreen mainGameScreen;
+	private CreditScreen creditScreen;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
