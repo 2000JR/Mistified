@@ -1,4 +1,4 @@
-package com.mygdx.mistified;
+package com.mistified.mistified;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

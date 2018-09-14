@@ -1,10 +1,10 @@
-package com.mygdx.mistified;
+package com.mistified;
 
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.mygdx.mistified.Mistified;
+import com.mistified.mistified.Mistified;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override

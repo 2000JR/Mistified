@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mygdx.mistified" >
+    package="com.mistified" >
 
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="28" />
 
@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/GdxTheme" >
         <activity
-            android:name="com.mygdx.mistified.AndroidLauncher"
+            android:name="com.mistified.mistified.com.mistified.AndroidLauncher"
             android:label="@string/app_name" 
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize">
