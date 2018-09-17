@@ -1,13 +1,14 @@
 package Screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 public class LoadingScreen implements Screen {
-
+    private static final Straing TAG = LoadingScreen.class.getSimpleName();
 
     @Override
     public void show() {
-
+        Gdx.app.log(TAG, "In loadingScreen");
     }
 
     @Override
