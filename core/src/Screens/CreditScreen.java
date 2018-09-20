@@ -1,9 +1,21 @@
 package Screens;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mistified.Mistified;
 
 public class CreditScreen implements Screen {
+    private static final String TAG = Mistified.class.getSimpleName();
+    private SpriteBatch batch;
+    private Texture img;
+    private Mistified game;
 
+
+    public CreditScreen( Mistified game, SpriteBatch batch) {
+        this.batch = batch;
+        this.game = game;
+    }
 
     @Override
     public void show() {

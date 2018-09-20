@@ -22,7 +22,7 @@ import static com.mistified.Mistified.SCREENTYPE.CREDITS;
 import static com.mistified.Mistified.SCREENTYPE.GAME;
 
 public class Mistified extends Game {
-    private static final Straing TAG = Mistified.class.getSimpleName();
+    private static final String TAG = Mistified.class.getSimpleName();
 
 	SpriteBatch batch;
 	Texture img;
@@ -40,29 +40,29 @@ public class Mistified extends Game {
 
     public void  createScreen (SCREENTYPE type) {
 
-        Screen screen = null;\
+        Screen screen = null;
         switch (type) {
             case LOAD:
                 if (loadingScreen == null) {
-                    loadingScreen = new LoadingScreen(this);
+                    loadingScreen = new LoadingScreen(this, batch);
                     screenTable.put(SCREENTYPE.LOAD, loadingScreen);
                 }
                 break;
             case MENU:
                 if (mainMenuScreen == null) {
-                    mainMenuScreen = new MainMenuScreen(this);
+                    mainMenuScreen = new MainMenuScreen(this, batch);
                     screenTable.put(SCREENTYPE.MENU, mainMenuScreen);
                 }
                 break;
             case GAME:
                 if (mainGameScreen == null) {
-                    mainGameScreen = new MainGameScreen(this);
+                    mainGameScreen = new MainGameScreen(this, batch);
                     screenTable.put(SCREENTYPE.GAME, mainGameScreen);
                 }
                 break;
             case CREDITS:
                 if (creditScreen == null) {
-                    creditScreen = new CreditScreen(this);
+                    creditScreen = new CreditScreen(this, batch);
                     screenTable.put(SCREENTYPE.CREDITS, creditScreen);
                 }
                 break;
