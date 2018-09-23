@@ -1,25 +1,17 @@
 package com.mistified;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.sun.xml.internal.ws.api.message.Message;
 
 import java.util.Hashtable;
-
-import javax.swing.text.html.HTML;
 
 import Screens.CreditScreen;
 import Screens.LoadingScreen;
 import Screens.MainGameScreen;
 import Screens.MainMenuScreen;
-
-import static com.mistified.Mistified.SCREENTYPE.CREDITS;
-import static com.mistified.Mistified.SCREENTYPE.GAME;
 
 public class Mistified extends Game {
     private static final String TAG = Mistified.class.getSimpleName();
