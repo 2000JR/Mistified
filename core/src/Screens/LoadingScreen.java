@@ -13,6 +13,7 @@ public class LoadingScreen implements Screen{
     private SpriteBatch batch;
     private Texture img;
     private Mistified game;
+    private  float TimeToWait = 2;
 
 
     public LoadingScreen(Mistified game, SpriteBatch batch) {
@@ -34,6 +35,13 @@ public class LoadingScreen implements Screen{
 		batch.begin();
 		batch.draw(img, 0, 0);
 		batch.end();
+
+		TimeToWait -= delta;
+		Gdx.app.log(TAG, "Time To Wait" + TimeToWait);
+		if (TimeToWait <= 0){
+            game.setScreen(Mistified.SCREENTYPE.MENU);
+            TimeToWait = 2f;
+        }
     }
 
     @Override
