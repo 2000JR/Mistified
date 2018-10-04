@@ -12,6 +12,8 @@ public class MainMenuScreen implements Screen {
     private SpriteBatch batch;
     private Texture img;
     private Mistified game;
+    private  float TimeToWait = 2;
+
 
     public MainMenuScreen(Mistified game, SpriteBatch batch) {
         this.batch = batch;
@@ -30,6 +32,12 @@ public class MainMenuScreen implements Screen {
         Gdx.gl.glClearColor(0, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        TimeToWait -= delta;
+        Gdx.app.log(TAG, "Time To Wait" + TimeToWait);
+        if (TimeToWait <= 0){
+            game.setScreen(Mistified.SCREENTYPE.GAME);
+            TimeToWait = 2f;
+        }
 
     }
 
