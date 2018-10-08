@@ -25,6 +25,7 @@ public class MainGameScreen implements Screen {
     //box2d
     private World world;
     private Body body;
+    private Body body2;
     private Vector2 gravitationalForces;
 
     //view
@@ -46,19 +47,35 @@ public class MainGameScreen implements Screen {
 
         world = new World(gravitationalForces, false);
         b2dr = new Box2DDebugRenderer();
+
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.setToOrtho(false, 16, 10);
+        //  camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2,0);
     }
 
 
-    public Body createBody(Vector2 position, float size) {
+    public Body createBody(Vector2 position, float size, float force, BodyDef.BodyType type) {
     Body body;
     BodyDef bdef = new BodyDef();
     FixtureDef fdef = new FixtureDef();
 
-    bdef.type = BodyDef.BodyType.DynamicBody;
+    switch(type) {
+        case StaticBody:
+            bdef.type = BodyDef.BodyType.StaticBody;
+            break;
+        case DynamicBody:
+            bdef.type = BodyDef.BodyType.DynamicBody;
+            break;
+        case KinematicBody:
+            bdef.type = BodyDef.BodyType.KinematicBody;
+            break;
+
+    }
+
+
     bdef.position.set(position.x, position.y);
+    bdef.gravityScale = force;
     body = world.createBody(bdef);
 
     CircleShape shape = new CircleShape();
@@ -81,7 +98,8 @@ public class MainGameScreen implements Screen {
 
 
 
-            body = createBody(new Vector2(camera.viewportWidth/2, camera.viewportHeight), 10f);
+        body = createBody(new Vector2(camera.viewportWidth/2, camera.viewportHeight), 1f, 1, BodyDef.BodyType.DynamicBody);
+        body2 = createBody(new Vector2(camera.viewportWidth/2, 0), 2f, 1.5f, BodyDef.BodyType.StaticBody);
 
 
 
