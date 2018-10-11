@@ -6,14 +6,24 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mistified.Mistified;
+
+import org.w3c.dom.ranges.Range;
+
+import java.util.Random;
+
+import sun.security.provider.SHA;
 
 public class MainGameScreen implements Screen {
     private static final String TAG = Mistified.class.getSimpleName();
@@ -27,15 +37,17 @@ public class MainGameScreen implements Screen {
     private Body body;
     private Body body2;
     private Vector2 gravitationalForces;
+    private float random;
+    private int randomShape;
+
+    public static final short GROUND =1;
+    public static final short PLAYER =2;
+    public static final short ENEMY =3;
+
 
     //view
     private OrthographicCamera camera;
     private Box2DDebugRenderer b2dr;
-
-
-
-
-
 
 
 
@@ -52,10 +64,12 @@ public class MainGameScreen implements Screen {
         camera.setToOrtho(false, 16, 10);
         //  camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2,0);
+
+
     }
 
 
-    public Body createBody(Vector2 position, float size, float force, BodyDef.BodyType type) {
+    public Body createBody(Vector2 position, float size, float force, BodyDef.BodyType type, int bodyType, short self, short interaction) {
     Body body;
     BodyDef bdef = new BodyDef();
     FixtureDef fdef = new FixtureDef();
@@ -77,13 +91,34 @@ public class MainGameScreen implements Screen {
     bdef.position.set(position.x, position.y);
     bdef.gravityScale = force;
     body = world.createBody(bdef);
+    Shape shape;
 
-    CircleShape shape = new CircleShape();
-    shape.setRadius(size/2);
+    switch(bodyType) {
+        case 0:
+            shape = new CircleShape();
+            shape.setRadius(size/2);
+            Gdx.gl.glEnable(2);
+
+
+            break;
+        case 1:
+           shape = new PolygonShape();
+            ((PolygonShape)shape).setAsBox(size/2,size/2);
+            break;
+            default:
+                shape = new CircleShape();
+                shape.setRadius(size/2);
+                break;
+
+    }
+
+
 
     fdef.shape = shape;
     fdef.density = 1f;
-    fdef.restitution = 0.5f;
+    fdef.restitution = 1f;
+    fdef.filter.categoryBits = self;
+    fdef.filter.maskBits = interaction;
     fdef.isSensor = false;
         body.createFixture(fdef);
 
@@ -97,9 +132,18 @@ public class MainGameScreen implements Screen {
     Gdx.app.log(TAG, "In show method");
 
 
+        for (int i = 0; i<10; i++) {
+            random = MathUtils.random(1, 5);
+            randomShape = MathUtils.random(0, 1);
+            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, PLAYER, GROUND);
+        }
+        for (int i = 0; i<10; i++) {
+            random = MathUtils.random(1, 5);
+            randomShape = MathUtils.random(0, 1);
+            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, ENEMY, PLAYER);
+        }
 
-        body = createBody(new Vector2(camera.viewportWidth/2, camera.viewportHeight), 1f, 1, BodyDef.BodyType.DynamicBody);
-        body2 = createBody(new Vector2(camera.viewportWidth/2, 0), 2f, 1.5f, BodyDef.BodyType.StaticBody);
+        body2 = createBody(new Vector2(camera.viewportWidth/2, -camera.viewportHeight /2 +1 ), camera.viewportWidth, 0, BodyDef.BodyType.StaticBody, 1, GROUND, PLAYER);
 
 
 
