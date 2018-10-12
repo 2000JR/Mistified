@@ -1,6 +1,7 @@
 package Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -18,6 +19,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mistified.Mistified;
+import java.util.*;
 
 import org.w3c.dom.ranges.Range;
 
@@ -40,9 +42,9 @@ public class MainGameScreen implements Screen {
     private float random;
     private int randomShape;
 
-    public static final short GROUND =1;
-    public static final short PLAYER =2;
-    public static final short ENEMY =3;
+    public static final short GROUND =2;
+    public static final short PLAYER =4;
+    public static final short ENEMY =8;
 
 
     //view
@@ -57,7 +59,7 @@ public class MainGameScreen implements Screen {
         this.game = game;
         gravitationalForces = new Vector2(0,-9.8f);
 
-        world = new World(gravitationalForces, false);
+        world = new World(gravitationalForces, true);
         b2dr = new Box2DDebugRenderer();
 
         camera = new OrthographicCamera();
@@ -132,21 +134,47 @@ public class MainGameScreen implements Screen {
     Gdx.app.log(TAG, "In show method");
 
 
+//        for (int i = 0; i<10; i++) {
+//            random = MathUtils.random(1, 5);
+//            randomShape = MathUtils.random(0, 1);
+//            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, PLAYER, GROUND);
+//        }
         for (int i = 0; i<10; i++) {
             random = MathUtils.random(1, 5);
             randomShape = MathUtils.random(0, 1);
-            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, PLAYER, GROUND);
+            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, ENEMY, (short)(PLAYER|GROUND));
         }
-        for (int i = 0; i<10; i++) {
-            random = MathUtils.random(1, 5);
-            randomShape = MathUtils.random(0, 1);
-            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, ENEMY, PLAYER);
-        }
-
+        body = createBody(new Vector2(camera.viewportWidth/2, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, 0, PLAYER, GROUND);
         body2 = createBody(new Vector2(camera.viewportWidth/2, -camera.viewportHeight /2 +1 ), camera.viewportWidth, 0, BodyDef.BodyType.StaticBody, 1, GROUND, PLAYER);
 
 
 
+
+    }
+
+
+
+    public void movebody() {
+        if (Gdx.input.isKeyPressed(Input.Keys.A)&& Gdx.input.isKeyPressed(Input.Keys.W)) {
+            body.setLinearVelocity(-1f, 1);
+        }  else if (Gdx.input.isKeyPressed(Input.Keys.D)&& Gdx.input.isKeyPressed(Input.Keys.W)) {
+            body.setLinearVelocity(1f, 1);
+        }
+        else if (Gdx.input.isKeyPressed(Input.Keys.A)&& Gdx.input.isKeyPressed(Input.Keys.S)) {
+            body.setLinearVelocity(-1f, -1);
+        }
+        else if (Gdx.input.isKeyPressed(Input.Keys.D)&& Gdx.input.isKeyPressed(Input.Keys.S)) {
+            body.setLinearVelocity(1f, -1);
+        }
+        else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+            body.setLinearVelocity(-1f, 0);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+            body.setLinearVelocity(1f, 0);
+        }else if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            body.applyLinearImpulse(0f,5f, body.getPosition().x, body.getPosition().y, true);
+        }else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            body.setLinearVelocity(0, -1);
+        }
 
 
     }
@@ -154,7 +182,7 @@ public class MainGameScreen implements Screen {
     @Override
     public void render(float delta) {
     camera.update();
-
+    movebody();
     world.step(delta, 6, 2);
 
     Gdx.app.log(TAG, "Render game method");
@@ -162,6 +190,7 @@ public class MainGameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         b2dr.render(world,camera.combined);
+
     }
 
     @Override
