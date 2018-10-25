@@ -18,6 +18,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mistified.Mistified;
 import java.util.*;
 
@@ -25,6 +26,7 @@ import org.w3c.dom.ranges.Range;
 
 import java.util.Random;
 
+import Helpers.Figures;
 import sun.security.provider.SHA;
 
 public class MainGameScreen implements Screen {
@@ -49,6 +51,7 @@ public class MainGameScreen implements Screen {
 
     //view
     private OrthographicCamera camera;
+    private FitViewport gameViewport;
     private Box2DDebugRenderer b2dr;
 
 
@@ -57,75 +60,29 @@ public class MainGameScreen implements Screen {
     public MainGameScreen(Mistified game, SpriteBatch batch) {
         this.batch = batch;
         this.game = game;
-        gravitationalForces = new Vector2(0,-9.8f);
-
-        world = new World(gravitationalForces, true);
-        b2dr = new Box2DDebugRenderer();
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 16, 10);
-        //  camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2,0);
+        gameViewport = new FitViewport(Figures.VIRTUALWIDTH,Figures.VIRTUALHEIGHT, camera);
+        camera.position.set(gameViewport.getWorldWidth()/2, gameViewport.getWorldHeight()/2,0);
+
+//        gravitationalForces = new Vector2(0,-9.8f);
+//
+//        world = new World(gravitationalForces, true);
+//        b2dr = new Box2DDebugRenderer();
+//
+//        camera = new OrthographicCamera();
+//        camera.setToOrtho(false, 16, 10);
+//        //  camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+//        camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2,0);
 
 
     }
 
 
-    public Body createBody(Vector2 position, float size, float force, BodyDef.BodyType type, int bodyType, short self, short interaction) {
-    Body body;
-    BodyDef bdef = new BodyDef();
-    FixtureDef fdef = new FixtureDef();
-
-    switch(type) {
-        case StaticBody:
-            bdef.type = BodyDef.BodyType.StaticBody;
-            break;
-        case DynamicBody:
-            bdef.type = BodyDef.BodyType.DynamicBody;
-            break;
-        case KinematicBody:
-            bdef.type = BodyDef.BodyType.KinematicBody;
-            break;
-
-    }
-
-
-    bdef.position.set(position.x, position.y);
-    bdef.gravityScale = force;
-    body = world.createBody(bdef);
-    Shape shape;
-
-    switch(bodyType) {
-        case 0:
-            shape = new CircleShape();
-            shape.setRadius(size/2);
-            Gdx.gl.glEnable(2);
-
-
-            break;
-        case 1:
-           shape = new PolygonShape();
-            ((PolygonShape)shape).setAsBox(size/2,size/2);
-            break;
-            default:
-                shape = new CircleShape();
-                shape.setRadius(size/2);
-                break;
-
-    }
 
 
 
-    fdef.shape = shape;
-    fdef.density = 1f;
-    fdef.restitution = 1f;
-    fdef.filter.categoryBits = self;
-    fdef.filter.maskBits = interaction;
-    fdef.isSensor = false;
-        body.createFixture(fdef);
 
-        return body;
-    }
 
 
 
@@ -139,13 +96,13 @@ public class MainGameScreen implements Screen {
 //            randomShape = MathUtils.random(0, 1);
 //            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, PLAYER, GROUND);
 //        }
-        for (int i = 0; i<10; i++) {
-            random = MathUtils.random(1, 5);
-            randomShape = MathUtils.random(0, 1);
-            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, ENEMY, (short)(PLAYER|GROUND));
-        }
-        body = createBody(new Vector2(camera.viewportWidth/2, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, 0, PLAYER, GROUND);
-        body2 = createBody(new Vector2(camera.viewportWidth/2, -camera.viewportHeight /2 +1 ), camera.viewportWidth, 0, BodyDef.BodyType.StaticBody, 1, GROUND, PLAYER);
+//        for (int i = 0; i<10; i++) {
+//            random = MathUtils.random(1, 5);
+//            randomShape = MathUtils.random(0, 1);
+//            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, ENEMY, (short)(PLAYER|GROUND));
+//        }
+//        body = createBody(new Vector2(camera.viewportWidth/2, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, 0, PLAYER, GROUND);
+//        body2 = createBody(new Vector2(camera.viewportWidth/2, -camera.viewportHeight /2 +1 ), camera.viewportWidth, 0, BodyDef.BodyType.StaticBody, 1, GROUND, PLAYER);
 
 
 
@@ -183,18 +140,20 @@ public class MainGameScreen implements Screen {
     public void render(float delta) {
     camera.update();
     movebody();
-    world.step(delta, 6, 2);
+   // world.step(delta, 6, 2);
 
     Gdx.app.log(TAG, "Render game method");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        b2dr.render(world,camera.combined);
+       // b2dr.render(world,camera.combined);
 
     }
 
     @Override
     public void resize(int width, int height) {
+
+        gameViewport.update(width,height);
 
     }
 
