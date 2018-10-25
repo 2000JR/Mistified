@@ -27,6 +27,7 @@ import org.w3c.dom.ranges.Range;
 import java.util.Random;
 
 import Helpers.Figures;
+import Helpers.GameInput;
 import sun.security.provider.SHA;
 
 public class MainGameScreen implements Screen {
@@ -54,6 +55,8 @@ public class MainGameScreen implements Screen {
     private FitViewport gameViewport;
     private Box2DDebugRenderer b2dr;
 
+    //Controls
+    private GameInput gameInput;
 
 
 
