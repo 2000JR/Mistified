@@ -11,6 +11,7 @@ public class GameInput implements GestureDetector.GestureListener {
     private OrthographicCamera camera;
     private Viewport gameViewport;
     private Vector3 touch;
+
     public GameInput(Viewport gameViewport) {
         this.gameViewport = gameViewport;
         camera = (OrthographicCamera) gameViewport.getCamera();

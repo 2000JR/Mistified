@@ -1,5 +1,6 @@
 package Screens;
 
+import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -58,6 +59,10 @@ public class MainGameScreen implements Screen {
     //Controls
     private GameInput gameInput;
 
+    //Ashley
+    private PooledEngine engine;
+
+
 
 
     public MainGameScreen(Mistified game, SpriteBatch batch) {
@@ -67,6 +72,11 @@ public class MainGameScreen implements Screen {
         camera = new OrthographicCamera();
         gameViewport = new FitViewport(Figures.VIRTUALWIDTH,Figures.VIRTUALHEIGHT, camera);
         camera.position.set(gameViewport.getWorldWidth()/2, gameViewport.getWorldHeight()/2,0);
+
+
+         gameInput = new GameInput(gameViewport);
+
+         engine = new PooledEngine(100,500, 300, 1000);
 
 //        gravitationalForces = new Vector2(0,-9.8f);
 //
