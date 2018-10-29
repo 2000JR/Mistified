@@ -46,9 +46,7 @@ public class MainGameScreen implements Screen {
     private float random;
     private int randomShape;
 
-    public static final short GROUND =2;
-    public static final short PLAYER =4;
-    public static final short ENEMY =8;
+
 
 
     //view

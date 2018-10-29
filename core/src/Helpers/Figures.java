@@ -3,4 +3,12 @@ package Helpers;
 public class Figures {
     public static final int VIRTUALWIDTH = 16;
     public static final int VIRTUALHEIGHT = 11;
+
+    //Collision types
+    public static final short OTHER = 2;
+    public static final short LEVEL = 4;
+    public static final short PLAYER = 8;
+    public static final short ENEMY = 16;
+    public static final short NPC = 32;
+    public static final short Item = 64;
 }
