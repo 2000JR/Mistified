@@ -3,7 +3,7 @@ package Components;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.utils.Pool;
 
-import static Helpers.Figures.OTHER;
+import static Helpers.Figures.*;
 
 public class TypeComponent implements Component, Pool.Poolable {
 
