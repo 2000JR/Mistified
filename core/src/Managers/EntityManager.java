@@ -13,11 +13,15 @@ import com.mistified.Mistified;
 import Components.BodyComponent;
 import Components.CollisionComponent;
 import Components.PlayerComponent;
+import Components.StateComponent;
 import Components.TypeComponent;
 import Helpers.BodyGenerator;
 import Helpers.Figures;
 
+import static Components.StateComponent.DIRECTION.DOWN;
+import static Components.StateComponent.STATE.IDLE;
 import static Helpers.Figures.*;
+import Components.StateComponent.*;
 
 public class EntityManager {
     private Mistified mistified;
@@ -51,6 +55,7 @@ public class EntityManager {
                 addTypeComponent(entity,entityName);
                 addCollisionComponent(entity);
                 addPlayerComponent(entity);
+                addStateComponent(entity, entityName);
                 break;
 
 
@@ -62,6 +67,22 @@ public class EntityManager {
         return entity;
 
     }
+
+    private Entity addStateComponent (Entity entity, String entityName){
+        StateComponent stateComponent = engine.createComponent(StateComponent.class);
+
+        switch(entityName){
+            case "PLAYER":
+                stateComponent.setDirection(DOWN);
+                stateComponent.setState(IDLE);
+                break;
+        }
+        entity.add(stateComponent);
+        return  entity;
+
+    }
+
+
     private Entity addPlayerComponent(Entity entity){
         PlayerComponent playerComponent = engine.createComponent(PlayerComponent.class);
         entity.add(playerComponent);
