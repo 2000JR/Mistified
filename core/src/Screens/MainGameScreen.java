@@ -29,6 +29,8 @@ import java.util.Random;
 
 import Helpers.Figures;
 import Helpers.GameInput;
+import Systems.PhysicsDebugSystem;
+import Systems.PhysicsSystem;
 import sun.security.provider.SHA;
 
 public class MainGameScreen implements Screen {
@@ -52,14 +54,15 @@ public class MainGameScreen implements Screen {
     //view
     private OrthographicCamera camera;
     private FitViewport gameViewport;
-    private Box2DDebugRenderer b2dr;
+
 
     //Controls
     private GameInput gameInput;
 
     //Ashley
     private PooledEngine engine;
-
+    private PhysicsSystem physicsSystem;
+    private PhysicsDebugSystem physicsDebugSystem;
 
 
 
@@ -75,6 +78,10 @@ public class MainGameScreen implements Screen {
          gameInput = new GameInput(gameViewport);
 
          engine = new PooledEngine(100,500, 300, 1000);
+        world = new World(Figures.GRAVAIATIONAL_FORCES, true);
+
+        initAshleySystem();
+
 
 //        gravitationalForces = new Vector2(0,-9.8f);
 //
@@ -90,7 +97,16 @@ public class MainGameScreen implements Screen {
     }
 
 
+    public void initAshleySystem(){
+        physicsSystem = new PhysicsSystem(world);
+        physicsDebugSystem = new PhysicsDebugSystem(world, camera);
 
+
+        engine.addSystem(physicsSystem);
+        engine.addSystem(physicsDebugSystem);
+
+
+    }
 
 
 
@@ -149,15 +165,16 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-    camera.update();
-    movebody();
+    //camera.update();
+   // movebody();
    // world.step(delta, 6, 2);
 
     Gdx.app.log(TAG, "Render game method");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-       // b2dr.render(world,camera.combined);
+        engine.update(delta);
+
 
     }
 
@@ -186,7 +203,7 @@ public class MainGameScreen implements Screen {
     @Override
     public void dispose() {
         Gdx.app.log(TAG, "Dispose game method");
-        b2dr.dispose();
+       
         world.dispose();
 
     }
