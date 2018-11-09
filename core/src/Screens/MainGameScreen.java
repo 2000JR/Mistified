@@ -27,10 +27,12 @@ import org.w3c.dom.ranges.Range;
 
 import java.util.Random;
 
+import Components.PlayerComponent;
 import Helpers.Figures;
 import Helpers.GameInput;
 import Systems.PhysicsDebugSystem;
 import Systems.PhysicsSystem;
+import Systems.PlayerControlSystem;
 import sun.security.provider.SHA;
 
 public class MainGameScreen implements Screen {
@@ -63,6 +65,7 @@ public class MainGameScreen implements Screen {
     private PooledEngine engine;
     private PhysicsSystem physicsSystem;
     private PhysicsDebugSystem physicsDebugSystem;
+    private PlayerControlSystem playerControlSystem;
 
 
 
@@ -76,7 +79,6 @@ public class MainGameScreen implements Screen {
 
 
          gameInput = new GameInput(gameViewport);
-
          engine = new PooledEngine(100,500, 300, 1000);
         world = new World(Figures.GRAVAIATIONAL_FORCES, true);
 
@@ -138,30 +140,30 @@ public class MainGameScreen implements Screen {
 
 
 
-    public void movebody() {
-        if (Gdx.input.isKeyPressed(Input.Keys.A)&& Gdx.input.isKeyPressed(Input.Keys.W)) {
-            body.setLinearVelocity(-1f, 1);
-        }  else if (Gdx.input.isKeyPressed(Input.Keys.D)&& Gdx.input.isKeyPressed(Input.Keys.W)) {
-            body.setLinearVelocity(1f, 1);
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.A)&& Gdx.input.isKeyPressed(Input.Keys.S)) {
-            body.setLinearVelocity(-1f, -1);
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.D)&& Gdx.input.isKeyPressed(Input.Keys.S)) {
-            body.setLinearVelocity(1f, -1);
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            body.setLinearVelocity(-1f, 0);
-        } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            body.setLinearVelocity(1f, 0);
-        }else if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            body.applyLinearImpulse(0f,5f, body.getPosition().x, body.getPosition().y, true);
-        }else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            body.setLinearVelocity(0, -1);
-        }
-
-
-    }
+//    public void movebody() {
+//        if (Gdx.input.isKeyPressed(Input.Keys.A)&& Gdx.input.isKeyPressed(Input.Keys.W)) {
+//            body.setLinearVelocity(-1f, 1);
+//        }  else if (Gdx.input.isKeyPressed(Input.Keys.D)&& Gdx.input.isKeyPressed(Input.Keys.W)) {
+//            body.setLinearVelocity(1f, 1);
+//        }
+//        else if (Gdx.input.isKeyPressed(Input.Keys.A)&& Gdx.input.isKeyPressed(Input.Keys.S)) {
+//            body.setLinearVelocity(-1f, -1);
+//        }
+//        else if (Gdx.input.isKeyPressed(Input.Keys.D)&& Gdx.input.isKeyPressed(Input.Keys.S)) {
+//            body.setLinearVelocity(1f, -1);
+//        }
+//        else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+//            body.setLinearVelocity(-1f, 0);
+//        } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+//            body.setLinearVelocity(1f, 0);
+//        }else if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+//            body.applyLinearImpulse(0f,5f, body.getPosition().x, body.getPosition().y, true);
+//        }else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+//            body.setLinearVelocity(0, -1);
+//        }
+//
+//
+//    }
 
     @Override
     public void render(float delta) {
