@@ -1,5 +1,6 @@
 package Screens;
 
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -30,6 +31,7 @@ import java.util.Random;
 import Components.PlayerComponent;
 import Helpers.Figures;
 import Helpers.GameInput;
+import Managers.EntityManager;
 import Systems.PhysicsDebugSystem;
 import Systems.PhysicsSystem;
 import Systems.PlayerControlSystem;
@@ -67,7 +69,9 @@ public class MainGameScreen implements Screen {
     private PhysicsDebugSystem physicsDebugSystem;
     private PlayerControlSystem playerControlSystem;
 
-
+    //Entity Manager
+    private EntityManager entityManager;
+    private Entity player;
 
     public MainGameScreen(Mistified game, SpriteBatch batch) {
         this.batch = batch;
@@ -83,6 +87,7 @@ public class MainGameScreen implements Screen {
         world = new World(Figures.GRAVAIATIONAL_FORCES, true);
 
         initAshleySystem();
+       entityManager = new EntityManager(game, world, this.batch, engine);
 
 
 //        gravitationalForces = new Vector2(0,-9.8f);
@@ -102,6 +107,7 @@ public class MainGameScreen implements Screen {
     public void initAshleySystem(){
         physicsSystem = new PhysicsSystem(world);
         physicsDebugSystem = new PhysicsDebugSystem(world, camera);
+        
 
 
         engine.addSystem(physicsSystem);
@@ -119,7 +125,7 @@ public class MainGameScreen implements Screen {
     public void show() {
     Gdx.app.log(TAG, "In show method");
 
-
+    player = entityManager.spawnEntity("Player", 8,5);
 //        for (int i = 0; i<10; i++) {
 //            random = MathUtils.random(1, 5);
 //            randomShape = MathUtils.random(0, 1);

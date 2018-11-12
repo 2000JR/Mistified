@@ -3,6 +3,7 @@ package Managers;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -38,8 +39,8 @@ public class EntityManager {
     this.batch = batch;
     this.engine = engine;
     generator = new BodyGenerator(world);
-    tmpPositionVector = Vector2.Zero;
-    tmpDimension = Vector2.Zero;
+    tmpPositionVector = new Vector2(Vector2.Zero);
+    tmpDimension = new Vector2(Vector2.Zero);
 
 
 

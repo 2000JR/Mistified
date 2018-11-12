@@ -38,6 +38,8 @@ public class BodyGenerator {
         }
 
        // bdef.position.set(position.x, position.y);
+
+        bdef.position.set(position.x + dimensions.x/2,position.y + dimensions.y/2 );
         bdef.gravityScale = 1;
         Shape shape;
 
