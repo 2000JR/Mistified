@@ -1,5 +1,6 @@
 package Helpers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector;
@@ -50,18 +51,11 @@ public class GameInput extends InputAdapter implements GestureDetector.GestureLi
     public boolean keyDown(int keycode) {
         boolean keyProcessed = false;
         switch (keycode) {
-//            case Input.Keys.A & Input.Keys.W:
-//                break;
-//                case Input.Keys.A & Input.Keys.S:
-//                break;
-//            case Input.Keys.D & Input.Keys.W:
-//                break;
-//            case Input.Keys.D & Input.Keys.S:
-//                break;
 
             case Input.Keys.W:
                 up = true;
                 keyProcessed = true;
+
                 break;
             case Input.Keys.S:
                 down = true;

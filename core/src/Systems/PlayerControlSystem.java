@@ -49,10 +49,10 @@ public class PlayerControlSystem extends IteratingSystem {
             stateComponent.setDirection(StateComponent.DIRECTION.RIGHT);
             stateComponent.setState(StateComponent.STATE.MOVING);
         }
-        if(!gameInput.isRight() && !gameInput.isLeft() && !gameInput.isUp() && !gameInput.isDown()){
-
-
-        }
+//        if(!gameInput.isRight() && !gameInput.isLeft() && !gameInput.isUp() && !gameInput.isDown()){
+//
+//
+//        }
 
     }
 }

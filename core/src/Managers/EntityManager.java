@@ -2,6 +2,7 @@ package Managers;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector;
@@ -25,6 +26,7 @@ import static Helpers.Figures.*;
 import Components.StateComponent.*;
 
 public class EntityManager {
+    private static final String TAG = Mistified.class.getSimpleName();
     private Mistified mistified;
     private World world;
     private SpriteBatch batch;
@@ -128,13 +130,14 @@ public class EntityManager {
 
             case "Player":
                 //Imported Figures class
+
                 fdef.filter.categoryBits = PLAYER;
                 fdef.filter.maskBits = Figures.ENEMY | Figures.LEVEL;
                 tmpDimension.x = 1;
                 tmpDimension.y = 1;
 
                 bodyComponent.setBody(generator.createBody(entity,tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1,fdef));
-
+                Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() +": "+ tmpDimension.toString()  );
                 bodyComponent.setActive(true);
                 bodyComponent.getBody().setLinearDamping(3f);
                 bodyComponent.getBody().setUserData(entity);

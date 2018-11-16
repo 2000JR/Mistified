@@ -28,6 +28,7 @@ import org.w3c.dom.ranges.Range;
 
 import java.util.Random;
 
+import Components.BodyComponent;
 import Components.PlayerComponent;
 import Helpers.Figures;
 import Helpers.GameInput;
@@ -124,7 +125,7 @@ public class MainGameScreen implements Screen {
     @Override
     public void show() {
     Gdx.app.log(TAG, "In show method");
-
+    Gdx.input.setInputProcessor(gameInput);
     player = entityManager.spawnEntity("Player", 8,5);
 //        for (int i = 0; i<10; i++) {
 //            random = MathUtils.random(1, 5);

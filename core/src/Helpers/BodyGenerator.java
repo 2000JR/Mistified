@@ -37,9 +37,9 @@ public class BodyGenerator {
 
         }
 
-       // bdef.position.set(position.x, position.y);
+       bdef.position.set(position.x, position.y);
 
-        bdef.position.set(position.x + dimensions.x/2,position.y + dimensions.y/2 );
+
         bdef.gravityScale = 1;
         Shape shape;
 
@@ -48,7 +48,7 @@ public class BodyGenerator {
             default:
                 shape = new CircleShape();
                 shape.setRadius(dimensions.x / 2);
-                bdef.position.set(dimensions.x/2, dimensions.y/2);
+                bdef.position.set(position.x + dimensions.x/2,position.y + dimensions.y/2);
                 Gdx.gl.glEnable(2);
 
 
@@ -56,7 +56,7 @@ public class BodyGenerator {
             case 1:
                 shape = new PolygonShape();
                 ((PolygonShape) shape).setAsBox(dimensions.x / 2, dimensions.y / 2);
-                bdef.position.set(dimensions.x/2, dimensions.y/2);
+                bdef.position.set(position.x + dimensions.x/2,position.y + dimensions.y/2);
                 break;
 
 
