@@ -32,6 +32,7 @@ import Components.BodyComponent;
 import Components.PlayerComponent;
 import Helpers.Figures;
 import Helpers.GameInput;
+import Managers.CollisionManager;
 import Managers.EntityManager;
 import Systems.PhysicsDebugSystem;
 import Systems.PhysicsSystem;
@@ -49,6 +50,7 @@ public class MainGameScreen implements Screen {
     private World world;
     private Body body;
     private Body body2;
+    private CollisionManager collisionManager;
     private Vector2 gravitationalForces;
     private float random;
     private int randomShape;
@@ -84,8 +86,11 @@ public class MainGameScreen implements Screen {
          gameInput = new GameInput(gameViewport);
          engine = new PooledEngine(100,500, 300, 1000);
         world = new World(Figures.GRAVAIATIONAL_FORCES, true);
+        collisionManager = new CollisionManager();
+        world.setContactListener(collisionManager);
 
         initAshleySystem();
+
        entityManager = new EntityManager(game, world, this.batch, engine);
 
 
@@ -136,7 +141,7 @@ public class MainGameScreen implements Screen {
 //            body = createBody(new Vector2(i, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, randomShape, ENEMY, (short)(PLAYER|GROUND));
 //        }
 //        body = createBody(new Vector2(camera.viewportWidth/2, camera.viewportHeight), random, 1, BodyDef.BodyType.DynamicBody, 0, PLAYER, GROUND);
-//        body2 = createBody(new Vector2(camera.viewportWidth/2, -camera.viewportHeight /2 +1 ), camera.viewportWidth, 0, BodyDef.BodyType.StaticBody, 1, GROUND, PLAYER);
+//        body2 = createBody(new Vector2(camera.viewportWidth/2, -camera.viewportHeight /2 +1 ), camera.viewportWidth, 0, BodyDef.BodyType.StaticBody, 1, GROUND, PL
 
 
 
