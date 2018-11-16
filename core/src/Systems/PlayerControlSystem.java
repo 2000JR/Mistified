@@ -15,7 +15,7 @@ public class PlayerControlSystem extends IteratingSystem {
 
     private GameInput gameInput;
 
-    public PlayerControlSystem() {
+    public PlayerControlSystem(GameInput gameInputa) {
         super(Family.all(PlayerComponent.class).get());
         this.gameInput = gameInput;
 
@@ -49,10 +49,10 @@ public class PlayerControlSystem extends IteratingSystem {
             stateComponent.setDirection(StateComponent.DIRECTION.RIGHT);
             stateComponent.setState(StateComponent.STATE.MOVING);
         }
-//        if(!gameInput.isRight() && !gameInput.isLeft() && !gameInput.isUp() && !gameInput.isDown()){
-//
-//
-//        }
+        if(!gameInput.isRight() && !gameInput.isLeft() && !gameInput.isUp() && !gameInput.isDown()){
+        stateComponent.setState(StateComponent.STATE.IDLE);
+
+        }
 
     }
 }

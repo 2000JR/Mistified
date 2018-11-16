@@ -54,8 +54,6 @@ public class MainGameScreen implements Screen {
     private int randomShape;
 
 
-
-
     //view
     private OrthographicCamera camera;
     private FitViewport gameViewport;
@@ -108,12 +106,12 @@ public class MainGameScreen implements Screen {
     public void initAshleySystem(){
         physicsSystem = new PhysicsSystem(world);
         physicsDebugSystem = new PhysicsDebugSystem(world, camera);
-        
+        playerControlSystem = new PlayerControlSystem(gameInput);
 
 
         engine.addSystem(physicsSystem);
         engine.addSystem(physicsDebugSystem);
-
+        engine.addSystem(playerControlSystem);
 
     }
 
