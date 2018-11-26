@@ -32,6 +32,7 @@ import Components.BodyComponent;
 import Components.PlayerComponent;
 import Helpers.Figures;
 import Helpers.GameInput;
+import Helpers.LevelCollisionGenerator;
 import Managers.CollisionManager;
 import Managers.EntityManager;
 import Systems.PhysicsDebugSystem;
@@ -74,9 +75,20 @@ public class MainGameScreen implements Screen {
     private EntityManager entityManager;
     private Entity player;
 
+    //Level generator
+    private LevelCollisionGenerator levelCollisionGenerator;
+    private Entity ground;
+
+    //temp variables for optimisations
+    private Vector2 tempPosition;
+    private Vector2 tempDimensions;
+
+
     public MainGameScreen(Mistified game, SpriteBatch batch) {
         this.batch = batch;
         this.game = game;
+        tempDimensions = new Vector2(Vector2.Zero);
+        tempPosition = new Vector2(Vector2.Zero);
 
         camera = new OrthographicCamera();
         gameViewport = new FitViewport(Figures.VIRTUALWIDTH,Figures.VIRTUALHEIGHT, camera);
@@ -92,7 +104,7 @@ public class MainGameScreen implements Screen {
         initAshleySystem();
 
        entityManager = new EntityManager(game, world, this.batch, engine);
-
+       levelCollisionGenerator = new LevelCollisionGenerator(world,engine);
 
 //        gravitationalForces = new Vector2(0,-9.8f);
 //
@@ -129,7 +141,15 @@ public class MainGameScreen implements Screen {
     public void show() {
     Gdx.app.log(TAG, "In show method");
     Gdx.input.setInputProcessor(gameInput);
+
     player = entityManager.spawnEntity("Player", 8,5);
+
+    //tmp lvl gen
+    tempPosition.y = 1 ;
+    tempPosition.x = 1;
+    tempDimensions.x = 1;
+    tempDimensions.y = 1;
+    ground = levelCollisionGenerator.createCollisionLevel(tempPosition,tempDimensions, BodyDef.BodyType.StaticBody,1);
 //        for (int i = 0; i<10; i++) {
 //            random = MathUtils.random(1, 5);
 //            randomShape = MathUtils.random(0, 1);
