@@ -145,9 +145,9 @@ public class MainGameScreen implements Screen {
     player = entityManager.spawnEntity("Player", 8,5);
 
     //tmp lvl gen
-    tempPosition.y = 1 ;
+    tempPosition.y = 8 ;
     tempPosition.x = 1;
-    tempDimensions.x = 1;
+    tempDimensions.x = 3;
     tempDimensions.y = 1;
     ground = levelCollisionGenerator.createCollisionLevel(tempPosition,tempDimensions, BodyDef.BodyType.StaticBody,1);
 //        for (int i = 0; i<10; i++) {

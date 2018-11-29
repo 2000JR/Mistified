@@ -15,7 +15,7 @@ public class PlayerControlSystem extends IteratingSystem {
 
     private GameInput gameInput;
 
-    public PlayerControlSystem(GameInput gameInputa) {
+    public PlayerControlSystem(GameInput gameInput) {
         super(Family.all(PlayerComponent.class).get());
         this.gameInput = gameInput;
 
