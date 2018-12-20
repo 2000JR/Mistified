@@ -149,7 +149,7 @@ public class MainGameScreen implements Screen {
     tempPosition.x = 1;
     tempDimensions.x = gameViewport.getWorldWidth();
     tempDimensions.y = 1;
-    ground = levelCollisionGenerator.createCollisionLevel(tempPosition,tempDimensions, BodyDef.BodyType.StaticBody,1);
+   // ground = levelCollisionGenerator.createCollisionLevel(tempPosition,tempDimensions, BodyDef.BodyType.StaticBody,1);
 //        for (int i = 0; i<10; i++) {
 //            random = MathUtils.random(1, 5);
 //            randomShape = MathUtils.random(0, 1);
