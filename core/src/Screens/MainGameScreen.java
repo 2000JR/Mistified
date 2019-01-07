@@ -10,6 +10,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -39,6 +43,8 @@ import Systems.PhysicsDebugSystem;
 import Systems.PhysicsSystem;
 import Systems.PlayerControlSystem;
 import sun.security.provider.SHA;
+
+import static Helpers.Figures.PPM;
 
 public class MainGameScreen implements Screen {
     private static final String TAG = Mistified.class.getSimpleName();
@@ -78,6 +84,8 @@ public class MainGameScreen implements Screen {
     //Level generator
     private LevelCollisionGenerator levelCollisionGenerator;
     private Entity ground;
+    private OrthogonalTiledMapRenderer mapRenderer;
+    private TiledMap map;
 
     //temp variables for optimisations
     private Vector2 tempPosition;
@@ -105,6 +113,15 @@ public class MainGameScreen implements Screen {
 
        entityManager = new EntityManager(game, world, this.batch, engine);
        levelCollisionGenerator = new LevelCollisionGenerator(world,engine);
+
+//todo need to change map in loaded when implementing sset manager
+
+       map = new TmxMapLoader().load("C:\\Users\\gamet\\Documents\\AndroidStudio\\Mistified\\android\\assets\\TestMap.tmx");
+        mapRenderer = new OrthogonalTiledMapRenderer(map,1/PPM,this.batch);
+
+       levelCollisionGenerator.createCollisionLevel (map);
+
+
 
 //        gravitationalForces = new Vector2(0,-9.8f);
 //
@@ -197,14 +214,19 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-    //camera.update();
+        camera.position.set(player.getComponent(BodyComponent.class).getBody().getPosition(),0);
+    camera.update();
    // movebody();
    // world.step(delta, 6, 2);
 
     Gdx.app.log(TAG, "Render game method");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+       // mapRenderer.getBatch().begin();
 
+        //mapRenderer.renderTileLayer((TiledMapTileLayer) map.getLayers().get);
+       mapRenderer.setView((OrthographicCamera) gameViewport.getCamera());
+        mapRenderer.render();
         engine.update(delta);
 
 
