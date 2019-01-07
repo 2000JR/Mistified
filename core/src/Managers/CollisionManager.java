@@ -39,13 +39,13 @@ public class CollisionManager implements ContactListener {
         if(fixture.getBody().getUserData() instanceof Entity){
             Entity collisionEntity = (Entity) fixture.getBody().getUserData();
             CollisionComponent collisionA = entity.getComponent (CollisionComponent.class);
-            CollisionComponent collisionb = collisionEntity.getComponent (CollisionComponent.class);
+            CollisionComponent collisionB = collisionEntity.getComponent (CollisionComponent.class);
 
             if(collisionA != null){
                 collisionA.setCollidedEntity(collisionEntity);
             }
-            else if (collisionb != null){
-                collisionA.setCollidedEntity(collisionEntity);
+            else if (collisionB != null){
+                collisionB.setCollidedEntity(entity);
 
             }
 
