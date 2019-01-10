@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Figures {
     public static final int VIRTUALWIDTH = 16;
     public static final int VIRTUALHEIGHT = 11;
-    public static final  int PPM = 16;
+    public static final  float PPM = 16;
     //Collision types
     public static final short OTHER = 2;
     public static final short LEVEL = 4;

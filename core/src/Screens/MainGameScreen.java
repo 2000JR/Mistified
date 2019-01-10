@@ -116,8 +116,8 @@ public class MainGameScreen implements Screen {
 
 //todo need to change map in loaded when implementing sset manager
 
-       map = new TmxMapLoader().load("C:\\Users\\gamet\\Documents\\AndroidStudio\\Mistified\\android\\assets\\TestMap.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map,1/PPM,this.batch);
+       map = new TmxMapLoader().load("TestMap.tmx");
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1/PPM);
 
        levelCollisionGenerator.createCollisionLevel (map);
 
@@ -158,8 +158,8 @@ public class MainGameScreen implements Screen {
     public void show() {
     Gdx.app.log(TAG, "In show method");
     Gdx.input.setInputProcessor(gameInput);
-
-    player = entityManager.spawnEntity("Player", 8,5);
+    //entityManager.spawnEntities(map);
+  player = entityManager.spawnEntity("Player", 8,5);
 
     //tmp lvl gen
     tempPosition.y = 8 ;
@@ -215,6 +215,7 @@ public class MainGameScreen implements Screen {
     @Override
     public void render(float delta) {
         camera.position.set(player.getComponent(BodyComponent.class).getBody().getPosition(),0);
+
     camera.update();
    // movebody();
    // world.step(delta, 6, 2);

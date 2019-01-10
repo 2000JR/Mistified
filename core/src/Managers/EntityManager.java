@@ -4,6 +4,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector;
 import com.badlogic.gdx.math.Vector2;
@@ -11,6 +14,8 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mistified.Mistified;
+
+import java.util.ArrayList;
 
 import Components.BodyComponent;
 import Components.CollisionComponent;
@@ -34,6 +39,7 @@ public class EntityManager {
     private BodyGenerator generator;
     private Vector2 tmpPositionVector;
     private Vector2 tmpDimension;
+    private ArrayList<Entity> entities;
 
     public EntityManager(Mistified mistified, World world, SpriteBatch batch, PooledEngine engine) {
     this.mistified = mistified;
@@ -43,7 +49,7 @@ public class EntityManager {
     generator = new BodyGenerator(world);
     tmpPositionVector = new Vector2(Vector2.Zero);
     tmpDimension = new Vector2(Vector2.Zero);
-
+    entities = new ArrayList<Entity>();
 
 
     }
@@ -70,6 +76,23 @@ public class EntityManager {
         return entity;
 
     }
+
+    public void spawnEntities(TiledMap map){
+
+        MapLayer layer = map.getLayers().get("SPAWN_LAYER");
+
+        for(MapObject object: layer.getObjects()){
+          String entityName = object.getProperties().get("Spawn",String.class);
+            int x = (int)object.getProperties().get("x");
+            int y = (int)object.getProperties().get("y");
+
+          //  entities.add(spawnEntity((entityName.x ,entityName,y));
+        }
+
+    }
+
+
+
 
     private Entity addStateComponent (Entity entity, String entityName){
         StateComponent stateComponent = engine.createComponent(StateComponent.class);
