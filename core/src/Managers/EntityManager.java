@@ -83,10 +83,10 @@ public class EntityManager {
 
         for(MapObject object: layer.getObjects()){
           String entityName = object.getProperties().get("Spawn",String.class);
-            int x = (int)object.getProperties().get("x");
-            int y = (int)object.getProperties().get("y");
+            int x = (int)object.getProperties().get("x", float.class).intValue();
+            int y = (int)object.getProperties().get("y", float.class).intValue();
 
-          //  entities.add(spawnEntity((entityName.x ,entityName,y));
+            entities.add(spawnEntity((entityName),x,y));
         }
 
     }
@@ -169,6 +169,9 @@ public class EntityManager {
 
         //method to build the body
 
+
+
+        //
 
 
 
