@@ -82,11 +82,17 @@ public class EntityManager {
         MapLayer layer = map.getLayers().get("SPAWN_LAYER");
 
         for(MapObject object: layer.getObjects()){
-          String entityName = object.getProperties().get("Spawn",String.class);
-            int x = (int)object.getProperties().get("x", float.class).intValue();
-            int y = (int)object.getProperties().get("y", float.class).intValue();
 
+
+          String entityName = object.getProperties().get("Spawn",String.class);
+            Gdx.app.log(TAG,"prespawn for" + object.getName());
+          Gdx.app.log(TAG,"spawn");
+            int x = (int)object.getProperties().get("x", float.class).intValue();
+            Gdx.app.log(TAG,"x" + object.getProperties().get("x", float.class).intValue());
+            int y = (int)object.getProperties().get("y", float.class).intValue();
+            Gdx.app.log(TAG,"y");
             entities.add(spawnEntity((entityName),x,y));
+            Gdx.app.log(TAG, entityName);
         }
 
     }

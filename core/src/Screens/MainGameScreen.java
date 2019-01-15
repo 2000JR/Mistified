@@ -99,9 +99,10 @@ public class MainGameScreen implements Screen {
         tempPosition = new Vector2(Vector2.Zero);
 
         camera = new OrthographicCamera();
-        gameViewport = new FitViewport(Figures.VIRTUALWIDTH,Figures.VIRTUALHEIGHT, camera);
-        camera.position.set(gameViewport.getWorldWidth()/2, gameViewport.getWorldHeight()/2,0);
+       gameViewport = new FitViewport(Figures.VIRTUALWIDTH,Figures.VIRTUALHEIGHT, camera);
 
+       // camera.position.set(gameViewport.getWorldWidth()/2, gameViewport.getWorldHeight()/2,0);
+        camera.position.set(gameViewport.getWorldWidth()/2, gameViewport.getWorldHeight()/2,0);
 
          gameInput = new GameInput(gameViewport);
          engine = new PooledEngine(100,500, 300, 1000);
@@ -158,7 +159,7 @@ public class MainGameScreen implements Screen {
     public void show() {
     Gdx.app.log(TAG, "In show method");
     Gdx.input.setInputProcessor(gameInput);
-    //entityManager.spawnEntities(map);
+    entityManager.spawnEntities(map);
  // player = entityManager.spawnEntity("Player", 8,5);
 
     //tmp lvl gen
@@ -214,7 +215,8 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-      //camera.position.set(player.getComponent(BodyComponent.class).getBody().getPosition(),0);
+       //Gdx.app.log(TAG, (player.getComponent(BodyComponent.class).getBody().getPosition()).toString());
+      camera.position.set(player.getComponent(BodyComponent.class).getBody().getPosition(),0);
 
     camera.update();
    // movebody();
