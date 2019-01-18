@@ -79,7 +79,7 @@ public class MainGameScreen implements Screen {
 
     //Entity Manager
     private EntityManager entityManager;
-    private Entity player;
+    private Entity Player = entityManager.spawnEntity("PLAYER", 0, 0);
 
     //Level generator
     private LevelCollisionGenerator levelCollisionGenerator;
@@ -216,8 +216,11 @@ public class MainGameScreen implements Screen {
     @Override
     public void render(float delta) {
        //Gdx.app.log(TAG, (player.getComponent(BodyComponent.class).getBody().getPosition()).toString());
-      camera.position.set(player.getComponent(BodyComponent.class).getBody().getPosition(),0);
 
+
+
+        //camera.position.set(0,5,0);
+        camera.position.set(Player.getComponent(BodyComponent.class).getBody().getPosition(),0);
     camera.update();
    // movebody();
    // world.step(delta, 6, 2);

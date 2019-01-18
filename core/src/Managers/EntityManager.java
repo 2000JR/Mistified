@@ -59,7 +59,7 @@ public class EntityManager {
 
         switch(entityName){
 
-            case "Player":
+            case "PLAYER":
                 addBodyComponent(entity,entityName,x,y);
                 addTypeComponent(entity,entityName);
                 addCollisionComponent(entity);
@@ -126,7 +126,7 @@ public class EntityManager {
         TypeComponent typeComponent = engine.createComponent(TypeComponent.class);
         short type;
         switch(entityName){
-            case "Player":
+            case "PLAYER":
                 type = Figures.PLAYER;
                 break;
                 default:
@@ -157,7 +157,7 @@ public class EntityManager {
        // method used to build the body
         switch(entityName){
 
-            case "Player":
+            case "PLAYER":
                 //Imported Figures class
 
                 fdef.filter.categoryBits = PLAYER;
@@ -196,4 +196,5 @@ public class EntityManager {
         return entity;
 
     }
+
 }
