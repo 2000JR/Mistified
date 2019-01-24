@@ -39,6 +39,7 @@ import Helpers.GameInput;
 import Helpers.LevelCollisionGenerator;
 import Managers.CollisionManager;
 import Managers.EntityManager;
+import Managers.PlayerManager;
 import Systems.PhysicsDebugSystem;
 import Systems.PhysicsSystem;
 import Systems.PlayerControlSystem;
@@ -79,7 +80,7 @@ public class MainGameScreen implements Screen {
 
     //Entity Manager
     private EntityManager entityManager;
-    private Entity Player = entityManager.spawnEntity("PLAYER", 0, 0);
+    private PlayerManager Player;
 
     //Level generator
     private LevelCollisionGenerator levelCollisionGenerator;
@@ -219,8 +220,8 @@ public class MainGameScreen implements Screen {
 
 
 
-        //camera.position.set(0,5,0);
-        camera.position.set(Player.getComponent(BodyComponent.class).getBody().getPosition(),0);
+
+        //camera.position.set(Player.getComponent(BodyComponent.class).getBody().getPosition(),0);
     camera.update();
    // movebody();
    // world.step(delta, 6, 2);

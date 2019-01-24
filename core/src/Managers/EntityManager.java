@@ -40,6 +40,7 @@ public class EntityManager {
     private Vector2 tmpPositionVector;
     private Vector2 tmpDimension;
     private ArrayList<Entity> entities;
+    public Entity Player;
 
     public EntityManager(Mistified mistified, World world, SpriteBatch batch, PooledEngine engine) {
     this.mistified = mistified;
@@ -196,5 +197,7 @@ public class EntityManager {
         return entity;
 
     }
+
+
 
 }
