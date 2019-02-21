@@ -13,6 +13,7 @@ public class Figures {
     public static final short ENEMY = 16;
     public static final short NPC = 32;
     public static final short Item = 64;
+    public static final short GEM = 128;
 
     //World
     public static final Vector2 GRAVAIATIONAL_FORCES = new Vector2(0,0);

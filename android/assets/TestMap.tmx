@@ -114,7 +114,7 @@
 </data>
  </layer>
  <objectgroup name="SPAWN_LAYER">
-  <object id="64" x="-15" y="511" width="28" height="28">
+  <object id="64" x="48" y="423" width="28" height="28">
    <properties>
     <property name="Name" value="Player"/>
     <property name="Spawn" value="PLAYER"/>
@@ -198,12 +198,6 @@
    <properties>
     <property name="Type" value="StaticBody"/>
    </properties>
-  </object>
-  <object id="47" x="70" y="436">
-   <properties>
-    <property name="Type" value="StaticBody"/>
-   </properties>
-   <ellipse/>
   </object>
  </objectgroup>
 </map>

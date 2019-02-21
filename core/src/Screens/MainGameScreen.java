@@ -40,6 +40,7 @@ import Helpers.LevelCollisionGenerator;
 import Managers.CollisionManager;
 import Managers.EntityManager;
 import Managers.PlayerManager;
+import Systems.CollisionSystem;
 import Systems.PhysicsDebugSystem;
 import Systems.PhysicsSystem;
 import Systems.PlayerControlSystem;
@@ -77,10 +78,11 @@ public class MainGameScreen implements Screen {
     private PhysicsSystem physicsSystem;
     private PhysicsDebugSystem physicsDebugSystem;
     private PlayerControlSystem playerControlSystem;
+    private CollisionSystem collisionSystem;
 
     //Entity Manager
     private EntityManager entityManager;
-    private PlayerManager Player;
+    private Entity player;
 
     //Level generator
     private LevelCollisionGenerator levelCollisionGenerator;
@@ -143,12 +145,12 @@ public class MainGameScreen implements Screen {
         physicsSystem = new PhysicsSystem(world);
         physicsDebugSystem = new PhysicsDebugSystem(world, camera);
         playerControlSystem = new PlayerControlSystem(gameInput);
-
+        collisionSystem = new CollisionSystem(engine, world, player, game);
 
         engine.addSystem(physicsSystem);
         engine.addSystem(physicsDebugSystem);
         engine.addSystem(playerControlSystem);
-
+        engine.addSystem(collisionSystem);
     }
 
 
