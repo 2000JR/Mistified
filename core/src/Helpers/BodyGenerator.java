@@ -11,6 +11,8 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 
+import static Helpers.Figures.PPM;
+
 public class BodyGenerator {
     private World world;
 
@@ -46,9 +48,10 @@ public class BodyGenerator {
         switch (bodyType) {
             case 0:
             default:
+                // todo PPM 26:37
                 shape = new CircleShape();
-                shape.setRadius(dimensions.x / 2);
-                bdef.position.set(position.x + dimensions.x/2,position.y + dimensions.y/2);
+                shape.setRadius(dimensions.x / 2 / PPM);
+                bdef.position.set((position.x + dimensions.x/2)/ PPM,(position.y + dimensions.y/2)/PPM);
                 Gdx.gl.glEnable(2);
 
 

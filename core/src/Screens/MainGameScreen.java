@@ -1,6 +1,7 @@
 package Screens;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -26,6 +27,7 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mistified.Mistified;
+
 import java.util.*;
 
 import org.w3c.dom.ranges.Range;
@@ -82,7 +84,7 @@ public class MainGameScreen implements Screen {
 
     //Entity Manager
     private EntityManager entityManager;
-    private Entity player;
+    private Entity Player;
 
     //Level generator
     private LevelCollisionGenerator levelCollisionGenerator;
@@ -102,29 +104,33 @@ public class MainGameScreen implements Screen {
         tempPosition = new Vector2(Vector2.Zero);
 
         camera = new OrthographicCamera();
-       gameViewport = new FitViewport(Figures.VIRTUALWIDTH,Figures.VIRTUALHEIGHT, camera);
+        gameViewport = new FitViewport(Figures.VIRTUALWIDTH , Figures.VIRTUALHEIGHT , camera);
 
-       // camera.position.set(gameViewport.getWorldWidth()/2, gameViewport.getWorldHeight()/2,0);
-        camera.position.set(gameViewport.getWorldWidth()/2, gameViewport.getWorldHeight()/2,0);
+        // camera.position.set(gameViewport.getWorldWidth()/2, gameViewport.getWorldHeight()/2,0);
 
-         gameInput = new GameInput(gameViewport);
-         engine = new PooledEngine(100,500, 300, 1000);
+        camera.position.set(gameViewport.getWorldWidth() / 2, gameViewport.getWorldHeight() / 2, 0);
+
+       // camera.position.set(gameViewport.getWorldWidth() * 5, gameViewport.getWorldHeight() * 5, 0);
+
+
+
+        gameInput = new GameInput(gameViewport);
+        engine = new PooledEngine(100, 500, 300, 1000);
         world = new World(Figures.GRAVAIATIONAL_FORCES, true);
         collisionManager = new CollisionManager();
         world.setContactListener(collisionManager);
 
         initAshleySystem();
 
-       entityManager = new EntityManager(game, world, this.batch, engine);
-       levelCollisionGenerator = new LevelCollisionGenerator(world,engine);
+        entityManager = new EntityManager(game, world, this.batch, engine);
+        levelCollisionGenerator = new LevelCollisionGenerator(world, engine);
 
 //todo need to change map in loaded when implementing sset manager
 
-       map = new TmxMapLoader().load("TestMap.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 1/PPM);
+        map = new TmxMapLoader().load("TestMap.tmx");
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / PPM);
 
-       levelCollisionGenerator.createCollisionLevel (map);
-
+        levelCollisionGenerator.createCollisionLevel(map);
 
 
 //        gravitationalForces = new Vector2(0,-9.8f);
@@ -141,11 +147,11 @@ public class MainGameScreen implements Screen {
     }
 
 
-    public void initAshleySystem(){
+    public void initAshleySystem() {
         physicsSystem = new PhysicsSystem(world);
         physicsDebugSystem = new PhysicsDebugSystem(world, camera);
         playerControlSystem = new PlayerControlSystem(gameInput);
-        collisionSystem = new CollisionSystem(engine, world, player, game);
+        collisionSystem = new CollisionSystem(engine, world, game);
 
         engine.addSystem(physicsSystem);
         engine.addSystem(physicsDebugSystem);
@@ -154,23 +160,19 @@ public class MainGameScreen implements Screen {
     }
 
 
-
-
-
-
     @Override
     public void show() {
-    Gdx.app.log(TAG, "In show method");
-    Gdx.input.setInputProcessor(gameInput);
-    entityManager.spawnEntities(map);
- // player = entityManager.spawnEntity("Player", 8,5);
+        Gdx.app.log(TAG, "In show method");
+        Gdx.input.setInputProcessor(gameInput);
+        entityManager.spawnEntities(map);
+        // player = entityManager.spawnEntity("Player", 8,5);
 
-    //tmp lvl gen
-    tempPosition.y = 8 ;
-    tempPosition.x = 1;
-    tempDimensions.x = gameViewport.getWorldWidth();
-    tempDimensions.y = 1;
-   // ground = levelCollisionGenerator.createCollisionLevel(tempPosition,tempDimensions, BodyDef.BodyType.StaticBody,1);
+        //tmp lvl gen
+        tempPosition.y = 8;
+        tempPosition.x = 1;
+        tempDimensions.x = gameViewport.getWorldWidth();
+        tempDimensions.y = 1;
+        // ground = levelCollisionGenerator.createCollisionLevel(tempPosition,tempDimensions, BodyDef.BodyType.StaticBody,1);
 //        for (int i = 0; i<10; i++) {
 //            random = MathUtils.random(1, 5);
 //            randomShape = MathUtils.random(0, 1);
@@ -185,10 +187,7 @@ public class MainGameScreen implements Screen {
 //        body2 = createBody(new Vector2(camera.viewportWidth/2, -camera.viewportHeight /2 +1 ), camera.viewportWidth, 0, BodyDef.BodyType.StaticBody, 1, GROUND, PL
 
 
-
-
     }
-
 
 
 //    public void movebody() {
@@ -216,25 +215,38 @@ public class MainGameScreen implements Screen {
 //
 //    }
 
+    private void updateCamera() {
+        for (Entity player : engine.getEntitiesFor(Family.all(PlayerComponent.class).get())) {
+
+            BodyComponent bodyComponent = player.getComponent(BodyComponent.class);
+
+            camera.position.set(bodyComponent.getBody().getPosition(),0);
+
+        }
+    camera.update();
+
+
+    }
+
     @Override
     public void render(float delta) {
-       //Gdx.app.log(TAG, (player.getComponent(BodyComponent.class).getBody().getPosition()).toString());
-
-
+        //Gdx.app.log(TAG, (player.getComponent(BodyComponent.class).getBody().getPosition()).toString());
 
 
         //camera.position.set(Player.getComponent(BodyComponent.class).getBody().getPosition(),0);
-    camera.update();
-   // movebody();
-   // world.step(delta, 6, 2);
 
-    Gdx.app.log(TAG, "Render game method");
+
+        updateCamera();
+        // movebody();
+        // world.step(delta, 6, 2);
+
+        Gdx.app.log(TAG, "Render game method");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-       // mapRenderer.getBatch().begin();
+        // mapRenderer.getBatch().begin();
 
-        //mapRenderer.renderTileLayer((TiledMapTileLayer) map.getLayers().get);
-       mapRenderer.setView((OrthographicCamera) gameViewport.getCamera());
+        //mapRenderer.renderTileLayer((TiledMapTileLayer) map.getLayers().get());
+        mapRenderer.setView((OrthographicCamera) gameViewport.getCamera());
         mapRenderer.render();
         engine.update(delta);
 
@@ -244,7 +256,7 @@ public class MainGameScreen implements Screen {
     @Override
     public void resize(int width, int height) {
 
-        gameViewport.update(width,height);
+        gameViewport.update(width, height);
 
     }
 

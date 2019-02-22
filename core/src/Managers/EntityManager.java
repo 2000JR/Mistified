@@ -63,6 +63,7 @@ public class EntityManager {
         switch (entityName) {
 
             case "PLAYER":
+                Gdx.app.log("Player Creation", "Position: ("+ x + "," + y + ")" );
                 addBodyComponent(entity, entityName, x, y);
                 addTypeComponent(entity, entityName);
                 addCollisionComponent(entity);
