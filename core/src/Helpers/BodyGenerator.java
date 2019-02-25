@@ -58,8 +58,8 @@ public class BodyGenerator {
                 break;
             case 1:
                 shape = new PolygonShape();
-                ((PolygonShape) shape).setAsBox(dimensions.x / 2, dimensions.y / 2);
-                bdef.position.set(position.x + dimensions.x/2,position.y + dimensions.y/2);
+                ((PolygonShape) shape).setAsBox((dimensions.x / 2) , (dimensions.y / 2) );
+                bdef.position.set((position.x + dimensions.x/2) / PPM,(position.y + dimensions.y/2) / PPM);
                 break;
 
 

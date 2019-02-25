@@ -247,7 +247,7 @@ public class MainGameScreen implements Screen {
 
         //mapRenderer.renderTileLayer((TiledMapTileLayer) map.getLayers().get());
         mapRenderer.setView((OrthographicCamera) gameViewport.getCamera());
-        mapRenderer.render();
+        //mapRenderer.render();
         engine.update(delta);
 
 

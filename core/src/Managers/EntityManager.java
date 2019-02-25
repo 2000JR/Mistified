@@ -190,7 +190,7 @@ public class EntityManager {
                 //Imported Figures class
 
                 fdef.filter.categoryBits = PLAYER;
-                fdef.filter.maskBits = Figures.ENEMY | Figures.LEVEL;
+                fdef.filter.maskBits = Figures.ENEMY | Figures.LEVEL | Figures.GEM;
                 tmpDimension.x = 1;
                 tmpDimension.y = 1;
 
