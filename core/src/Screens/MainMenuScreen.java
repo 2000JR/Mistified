@@ -7,17 +7,20 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mistified.Mistified;
 
+import Managers.MyAssetManager;
+
 public class MainMenuScreen implements Screen {
     private static final String TAG = Mistified.class.getSimpleName();
     private SpriteBatch batch;
     private Texture img;
     private Mistified game;
     private  float TimeToWait = 2;
+    private MyAssetManager myAssetManager;
 
-
-    public MainMenuScreen(Mistified game, SpriteBatch batch) {
+    public MainMenuScreen(Mistified game, SpriteBatch batch, MyAssetManager myAssetManager) {
         this.batch = batch;
         this.game = game;
+        this.myAssetManager = myAssetManager;
         Gdx.app.log(TAG, "MainMenu Constructor");
     }
 

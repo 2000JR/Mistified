@@ -41,6 +41,7 @@ import Helpers.GameInput;
 import Helpers.LevelCollisionGenerator;
 import Managers.CollisionManager;
 import Managers.EntityManager;
+import Managers.MyAssetManager;
 import Managers.PlayerManager;
 import Systems.CollisionSystem;
 import Systems.PhysicsDebugSystem;
@@ -55,7 +56,7 @@ public class MainGameScreen implements Screen {
     private SpriteBatch batch;
     private Texture img;
     private Mistified game;
-
+    private MyAssetManager myAssetManager;
 
     //box2d
     private World world;
@@ -97,9 +98,10 @@ public class MainGameScreen implements Screen {
     private Vector2 tempDimensions;
 
 
-    public MainGameScreen(Mistified game, SpriteBatch batch) {
+    public MainGameScreen(Mistified game, SpriteBatch batch, MyAssetManager myAssetManager) {
         this.batch = batch;
         this.game = game;
+        this.myAssetManager = myAssetManager;
         tempDimensions = new Vector2(Vector2.Zero);
         tempPosition = new Vector2(Vector2.Zero);
 
@@ -277,9 +279,10 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void dispose() {
-        Gdx.app.log(TAG, "Dispose game method");
 
+        Gdx.app.log(TAG, "Dispose game method");
         world.dispose();
+        map.dispose();
 
     }
 }

@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mistified.Mistified;
 
+import Managers.MyAssetManager;
+
 public class LoadingScreen implements Screen{
 
     private static final String TAG = Mistified.class.getSimpleName();
@@ -14,11 +16,12 @@ public class LoadingScreen implements Screen{
     private Texture img;
     private Mistified game;
     private  float TimeToWait = 2;
+    private MyAssetManager myAssetManager;
 
-
-    public LoadingScreen(Mistified game, SpriteBatch batch) {
+    public LoadingScreen(Mistified game, SpriteBatch batch, MyAssetManager myAssetManager) {
         this.game = game;
         this.batch = batch;
+        this.myAssetManager = myAssetManager;
         img = new Texture("badlogic.jpg");
     }
 

@@ -3,11 +3,14 @@ package com.mistified;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Hashtable;
 
+import Managers.MyAssetManager;
 import Screens.CreditScreen;
 import Screens.LoadingScreen;
 import Screens.MainGameScreen;
@@ -16,8 +19,11 @@ import Screens.MainMenuScreen;
 public class Mistified extends Game {
     private static final String TAG = Mistified.class.getSimpleName();
 
+
 	SpriteBatch batch;
 	Texture img;
+    private AssetManager assetManager;
+    public MyAssetManager myAssetManager;
 
 	private LoadingScreen loadingScreen;
 	private MainMenuScreen mainMenuScreen;
@@ -36,25 +42,25 @@ public class Mistified extends Game {
         switch (type) {
             case LOAD:
                 if (loadingScreen == null) {
-                    loadingScreen = new LoadingScreen(this, batch);
+                    loadingScreen = new LoadingScreen(this, batch, myAssetManager);
                     screenTable.put(SCREENTYPE.LOAD, loadingScreen);
                 }
                 break;
             case MENU:
                 if (mainMenuScreen == null) {
-                    mainMenuScreen = new MainMenuScreen(this, batch);
+                    mainMenuScreen = new MainMenuScreen(this, batch, myAssetManager);
                     screenTable.put(SCREENTYPE.MENU, mainMenuScreen);
                 }
                 break;
             case GAME:
                 if (mainGameScreen == null) {
-                    mainGameScreen = new MainGameScreen(this, batch);
+                    mainGameScreen = new MainGameScreen(this, batch, myAssetManager);
                     screenTable.put(SCREENTYPE.GAME, mainGameScreen);
                 }
                 break;
             case CREDITS:
                 if (creditScreen == null) {
-                    creditScreen = new CreditScreen(this, batch);
+                    creditScreen = new CreditScreen(this, batch, myAssetManager);
                     screenTable.put(SCREENTYPE.CREDITS, creditScreen);
                 }
                 break;
@@ -72,6 +78,11 @@ public class Mistified extends Game {
         screenTable = new Hashtable<SCREENTYPE, Screen>();
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
+		assetManager = new AssetManager(new InternalFileHandleResolver());
+		myAssetManager = new MyAssetManager(assetManager);
+
+
+
 		setScreen(SCREENTYPE.GAME);
 
 
