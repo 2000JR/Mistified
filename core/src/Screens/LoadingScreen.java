@@ -22,17 +22,26 @@ public class LoadingScreen implements Screen{
         this.game = game;
         this.batch = batch;
         this.myAssetManager = myAssetManager;
+
+
+
+
+
+
         img = new Texture("badlogic.jpg");
     }
 
     @Override
     public void show() {
-    Gdx.app.log(TAG, "Loading screen show method");
+
+        //Gdx.app.log(TAG, "Loading screen show method");
+
+        loadingMapAssets();
     }
 
     @Override
     public void render(float delta) {
-        Gdx.app.log(TAG, "Loading screen render method");
+       // Gdx.app.log(TAG, "Loading screen render method");
         Gdx.gl.glClearColor(1, 0, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
@@ -41,7 +50,12 @@ public class LoadingScreen implements Screen{
 
 		TimeToWait -= delta;
 		Gdx.app.log(TAG, "Time To Wait" + TimeToWait);
-		if (TimeToWait <= 0){
+
+		//blocking while loading maps
+
+    myAssetManager.updateAssetloading();
+
+		if (TimeToWait <= 0 && myAssetManager.isAssetLoaded("TestMap.tmx")){
             game.setScreen(Mistified.SCREENTYPE.MENU);
             TimeToWait = 2f;
         }
@@ -49,7 +63,7 @@ public class LoadingScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
-        Gdx.app.log(TAG, "Loading screen resize method");
+       // Gdx.app.log(TAG, "Loading screen resize method");
 
     }
 
@@ -67,12 +81,25 @@ public class LoadingScreen implements Screen{
 
     @Override
     public void hide() {
-        Gdx.app.log(TAG, "Loading screen hide method");
+        Gdx.app.log(TAG,
+                "Loading screen hide method");
     }
 
     @Override
     public void dispose() {
         Gdx.app.log(TAG, "Loading screen dispose method");
 
+    }
+
+
+    private void loadingMapAssets(){
+        myAssetManager.loadMapAsset("TestMap.tmx");
+        Gdx.app.log(TAG, "" + myAssetManager.loadCompleted());
+
+        myAssetManager.loadCompleted();
+
+//        if (myAssetManager.isAssetLoaded("TestMap.tmx")){
+//            String loadingfile += "Map: TestMap.tmx .......... DONE!" ;
+//        }
     }
 }

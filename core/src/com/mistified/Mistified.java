@@ -83,7 +83,7 @@ public class Mistified extends Game {
 
 
 
-		setScreen(SCREENTYPE.GAME);
+		setScreen(SCREENTYPE.LOAD);
 
 
 
