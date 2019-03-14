@@ -37,6 +37,7 @@ public class LoadingScreen implements Screen{
         //Gdx.app.log(TAG, "Loading screen show method");
 
         loadingMapAssets();
+        loadingTextureAtlas();
     }
 
     @Override
@@ -55,7 +56,7 @@ public class LoadingScreen implements Screen{
 
     myAssetManager.updateAssetloading();
 
-		if (TimeToWait <= 0 && myAssetManager.isAssetLoaded("TestMap.tmx")){
+		if (TimeToWait <= 0 && myAssetManager.loadCompleted() == 1 ){
             game.setScreen(Mistified.SCREENTYPE.MENU);
             TimeToWait = 2f;
         }
@@ -101,5 +102,11 @@ public class LoadingScreen implements Screen{
 //        if (myAssetManager.isAssetLoaded("TestMap.tmx")){
 //            String loadingfile += "Map: TestMap.tmx .......... DONE!" ;
 //        }
+    }
+
+    public void loadingTextureAtlas(){
+        myAssetManager.loadTextureAsset("assets/Characters/Player/PlayerPng/unnamed.atlas");
+
+
     }
 }

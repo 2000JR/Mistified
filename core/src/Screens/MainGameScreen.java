@@ -282,7 +282,7 @@ public class MainGameScreen implements Screen {
 
         Gdx.app.log(TAG, "Dispose game method");
         world.dispose();
-
+        myAssetManager.dispose();
 
     }
 }
