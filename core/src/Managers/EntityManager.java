@@ -3,7 +3,11 @@ package Managers;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -17,10 +21,12 @@ import com.mistified.Mistified;
 
 import java.util.ArrayList;
 
+import Components.AnimationComponent;
 import Components.BodyComponent;
 import Components.CollisionComponent;
 import Components.PlayerComponent;
 import Components.StateComponent;
+import Components.TextureComponent;
 import Components.TypeComponent;
 import Helpers.BodyGenerator;
 import Helpers.Figures;
@@ -35,6 +41,8 @@ public class EntityManager {
     private static final String TAG = Mistified.class.getSimpleName();
     private Mistified mistified;
     private World world;
+    private MyAssetManager myAssetManager;
+    private TextureAtlas atlas;
     private SpriteBatch batch;
     private PooledEngine engine;
     private BodyGenerator generator;
@@ -43,11 +51,13 @@ public class EntityManager {
     private ArrayList<Entity> entities;
     public Entity Player;
 
-    public EntityManager(Mistified mistified, World world, SpriteBatch batch, PooledEngine engine) {
+    public EntityManager(Mistified mistified, World world, SpriteBatch batch, PooledEngine engine, MyAssetManager myAssetManager) {
         this.mistified = mistified;
         this.world = world;
         this.batch = batch;
         this.engine = engine;
+        this.myAssetManager = myAssetManager;
+        atlas = myAssetManager.getTextureAsset("assets/Player/unnamed.atlas");
         generator = new BodyGenerator(world);
         tmpPositionVector = new Vector2(Vector2.Zero);
         tmpDimension = new Vector2(Vector2.Zero);
@@ -69,6 +79,7 @@ public class EntityManager {
                 addCollisionComponent(entity);
                 addPlayerComponent(entity);
                 addStateComponent(entity, entityName);
+                addAnimationComponent(entity,entityName);
 
                 break;
             case "ENEMY":
@@ -132,6 +143,51 @@ public class EntityManager {
 
     }
 
+    private Entity addAnimationComponent (Entity entity, String entityName){
+        AnimationComponent animationComponent = engine.createComponent(AnimationComponent.class);
+
+        switch (entityName) {
+
+            case "PLAYER":
+                animationComponent.addAnimation(AnimationComponent.ANIMATIONSTATE.UP,
+                        new Animation(0.25f, atlas.findRegions("PlayerUp")))
+                        .addAnimation(AnimationComponent.ANIMATIONSTATE.DOWN,
+                                new Animation(0.25f, atlas.findRegions("PlayerDown")))
+                        .addAnimation(AnimationComponent.ANIMATIONSTATE.LEFT,
+                                new Animation(0.25f, atlas.findRegions("PlayerLeft")))
+                        .addAnimation(AnimationComponent.ANIMATIONSTATE.RIGHT,
+                                new Animation(0.25f, atlas.findRegions("PlayerRight")));
+
+
+
+
+
+                break;
+            case "Enemy":
+                break;
+            case "Gem":
+                break;
+
+
+        }
+            entity.add(animationComponent);
+        return entity;
+    }
+
+//    private Entity addTextureComponent(Entity entity,String entityName){
+//
+//        TextureComponent textureComponent = engine.createComponent(TextureComponent.class);
+//
+//        switch (entityName) {
+//
+//            case "PLAYER":
+////                textureComponent.setRegion((TextureRegion) entity
+////                        .getComponent(AnimationComponent.class)
+////                        .getAnimation(AnimationComponent.ANIMATIONSTATE.DOWN)
+////                        .getKeyFrames(){0});
+//
+//        }
+//    }
 
     private Entity addPlayerComponent(Entity entity) {
         PlayerComponent playerComponent = engine.createComponent(PlayerComponent.class);

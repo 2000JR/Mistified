@@ -37,5 +37,6 @@ public class StateComponent implements Component, Pool.Poolable {
     public void reset() {
     state =  null;
     direction = null;
+
     }
 }
