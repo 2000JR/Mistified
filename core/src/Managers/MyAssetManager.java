@@ -112,7 +112,7 @@ public class MyAssetManager {
             return atlas;
         }
         else{
-            Gdx.app.log(TAG, "Map is not loaded: " + filePath);
+            Gdx.app.log(TAG, "texture is not loaded: " + filePath);
             return atlas;
         }
     }

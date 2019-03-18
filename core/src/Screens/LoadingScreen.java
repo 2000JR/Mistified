@@ -105,7 +105,7 @@ public class LoadingScreen implements Screen{
     }
 
     public void loadingTextureAtlas(){
-        myAssetManager.loadTextureAsset("assets/Characters/Player/PlayerPng/unnamed.atlas");
+        myAssetManager.loadTextureAsset("Characters/Player/PlayerPng/unnamed.atlas");
 
 
     }

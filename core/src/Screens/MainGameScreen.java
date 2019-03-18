@@ -124,7 +124,7 @@ public class MainGameScreen implements Screen {
 
         initAshleySystem();
 
-        entityManager = new EntityManager(game, world, this.batch, engine);
+        entityManager = new EntityManager(game, world, this.batch, engine, this.myAssetManager);
         levelCollisionGenerator = new LevelCollisionGenerator(world, engine);
 
 //todo need to change map in loaded when implementing sset manager

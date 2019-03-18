@@ -57,7 +57,7 @@ public class EntityManager {
         this.batch = batch;
         this.engine = engine;
         this.myAssetManager = myAssetManager;
-        atlas = myAssetManager.getTextureAsset("assets/Player/unnamed.atlas");
+        atlas = myAssetManager.getTextureAsset("Characters/Player/PlayerPng/unnamed.atlas");
         generator = new BodyGenerator(world);
         tmpPositionVector = new Vector2(Vector2.Zero);
         tmpDimension = new Vector2(Vector2.Zero);
@@ -80,6 +80,7 @@ public class EntityManager {
                 addPlayerComponent(entity);
                 addStateComponent(entity, entityName);
                 addAnimationComponent(entity,entityName);
+                addTextureComponent(entity,entityName);
 
                 break;
             case "ENEMY":
@@ -91,6 +92,7 @@ public class EntityManager {
                 break;
             case "GEM":
                 addBodyComponent(entity, entityName, x, y);
+                // addTextureComponent(entity,entityName);
                 break;
 
 
@@ -174,20 +176,27 @@ public class EntityManager {
         return entity;
     }
 
-//    private Entity addTextureComponent(Entity entity,String entityName){
-//
-//        TextureComponent textureComponent = engine.createComponent(TextureComponent.class);
-//
-//        switch (entityName) {
-//
-//            case "PLAYER":
-////                textureComponent.setRegion((TextureRegion) entity
-////                        .getComponent(AnimationComponent.class)
-////                        .getAnimation(AnimationComponent.ANIMATIONSTATE.DOWN)
-////                        .getKeyFrames(){0});
-//
-//        }
-//    }
+    private Entity addTextureComponent(Entity entity,String entityName){
+
+        TextureComponent textureComponent = engine.createComponent(TextureComponent.class);
+
+        switch (entityName) {
+
+            case "PLAYER":
+                textureComponent.setRegion((TextureRegion) entity
+                        .getComponent(AnimationComponent.class)
+                        .getAnimation(AnimationComponent.ANIMATIONSTATE.DOWN)
+                        .getKeyFrames()[0]);
+
+                break;
+
+            case "GEM" :
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("CHANGE"))); // CHANGE is a placeholder
+                break;
+        }
+        entity.add(textureComponent);
+        return entity;
+    }
 
     private Entity addPlayerComponent(Entity entity) {
         PlayerComponent playerComponent = engine.createComponent(PlayerComponent.class);
