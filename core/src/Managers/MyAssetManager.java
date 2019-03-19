@@ -73,15 +73,18 @@ public class MyAssetManager {
     }
     public TiledMap getMapAsset (String filePath){
         TiledMap map = null;
+
         if(assetManager.isLoaded(filePath)){
 
             map = assetManager.get(filePath, TiledMap.class);
             return map;
         }
+
         else{
             Gdx.app.log(TAG, "Map is not loaded: " + filePath);
             return map;
         }
+
     }
 
     public void loadTextureAsset (String filePath){

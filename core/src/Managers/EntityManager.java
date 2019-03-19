@@ -25,6 +25,7 @@ import Components.AnimationComponent;
 import Components.BodyComponent;
 import Components.CollisionComponent;
 import Components.PlayerComponent;
+import Components.RenderableComponent;
 import Components.StateComponent;
 import Components.TextureComponent;
 import Components.TypeComponent;
@@ -81,6 +82,7 @@ public class EntityManager {
                 addStateComponent(entity, entityName);
                 addAnimationComponent(entity,entityName);
                 addTextureComponent(entity,entityName);
+                addRenderableComponent(entity);
 
                 break;
             case "ENEMY":
@@ -89,9 +91,11 @@ public class EntityManager {
                 addTypeComponent(entity, entityName);
                 addCollisionComponent(entity);
                 addStateComponent(entity, entityName);
+                addRenderableComponent(entity);
                 break;
             case "GEM":
                 addBodyComponent(entity, entityName, x, y);
+                addRenderableComponent(entity);
                 // addTextureComponent(entity,entityName);
                 break;
 
@@ -306,6 +310,12 @@ public class EntityManager {
         return entity;
 
     }
+    private Entity addRenderableComponent (Entity entity){
 
+        RenderableComponent renderableComponent = engine.createComponent(RenderableComponent.class);
+        entity.add(renderableComponent);
+        return  entity;
+
+    }
 
 }
