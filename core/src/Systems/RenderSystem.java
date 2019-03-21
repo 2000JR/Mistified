@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Array;
 import Components.RenderableComponent;
 import Components.TextureComponent;
 import Components.TransformComponent;
+import Helpers.Figures;
 import Helpers.Mappers;
 
 public class RenderSystem extends IteratingSystem {
@@ -19,8 +20,8 @@ public class RenderSystem extends IteratingSystem {
     private Array<Entity> bodiesQue;
     private OrthographicCamera camera;
 
-    public RenderSystem(Family family, SpriteBatch batch, OrthographicCamera camera) {
-        super(family.all(RenderableComponent.class).get());
+    public RenderSystem( SpriteBatch batch, OrthographicCamera camera) {
+        super(Family.all(RenderableComponent.class).get());
         this.batch = batch;
         this.camera = camera;
         bodiesQue = new Array<>();
@@ -30,7 +31,9 @@ public class RenderSystem extends IteratingSystem {
 
     @Override
     public void update(float deltaTime) {
+
         super.update(deltaTime);
+
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
@@ -39,8 +42,10 @@ public class RenderSystem extends IteratingSystem {
             TextureComponent texture = Mappers.textureComponent.get(entity);
             TransformComponent transform = Mappers.transformComponent.get(entity);
 
-            batch.draw(texture.getRegion(), transform.getPosition().x,transform.getPosition().y,
-                    texture.getRegion().getRegionWidth(), texture.getRegion().getRegionHeight());
+          batch.draw(texture.getRegion(),
+                  transform.getPosition().x- (texture.getRegion().getRegionWidth()/2)/Figures.PPM,
+                  transform.getPosition().y- (texture.getRegion().getRegionHeight()/2)/Figures.PPM,
+                  texture.getRegion().getRegionWidth()/ Figures.PPM, texture.getRegion().getRegionHeight()/Figures.PPM);
 
 
         }

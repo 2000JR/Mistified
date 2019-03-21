@@ -28,6 +28,7 @@ import Components.PlayerComponent;
 import Components.RenderableComponent;
 import Components.StateComponent;
 import Components.TextureComponent;
+import Components.TransformComponent;
 import Components.TypeComponent;
 import Helpers.BodyGenerator;
 import Helpers.Figures;
@@ -71,32 +72,39 @@ public class EntityManager {
     public Entity spawnEntity(String entityName, int x, int y) {
         Entity entity = engine.createEntity();
 
+
+        Gdx.app.log(TAG, "Created: " + entityName);
         switch (entityName) {
 
             case "PLAYER":
                 Gdx.app.log("Player Creation", "Position: ("+ x + "," + y + ")" );
                 addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
                 addTypeComponent(entity, entityName);
                 addCollisionComponent(entity);
                 addPlayerComponent(entity);
                 addStateComponent(entity, entityName);
                 addAnimationComponent(entity,entityName);
                 addTextureComponent(entity,entityName);
-                addRenderableComponent(entity);
+               addRenderableComponent(entity);
 
                 break;
             case "ENEMY":
                 // todo enemy component
+                Gdx.app.log("ENEMY Creation", "Position: ("+ x + "," + y + ")" );
                 addBodyComponent(entity, entityName, x, y);
+              addTransformcomponent(entity,x,y);
                 addTypeComponent(entity, entityName);
                 addCollisionComponent(entity);
                 addStateComponent(entity, entityName);
-                addRenderableComponent(entity);
+               //addRenderableComponent(entity);
                 break;
             case "GEM":
+                Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
                 addBodyComponent(entity, entityName, x, y);
-                addRenderableComponent(entity);
-                // addTextureComponent(entity,entityName);
+               addTransformcomponent(entity,x,y);
+              //addRenderableComponent(entity);
+              //addTextureComponent(entity,entityName);
                 break;
 
 
@@ -194,9 +202,9 @@ public class EntityManager {
 
                 break;
 
-            case "GEM" :
-                textureComponent.setRegion(new TextureRegion(atlas.findRegion("CHANGE"))); // CHANGE is a placeholder
-                break;
+//            case "GEM" :
+//                textureComponent.setRegion(new TextureRegion(atlas.findRegion("CHANGE"))); // CHANGE is a placeholder
+//                break;
         }
         entity.add(textureComponent);
         return entity;
@@ -318,4 +326,12 @@ public class EntityManager {
 
     }
 
+    private  Entity addTransformcomponent (Entity entity, int x, int y){
+        TransformComponent transformComponent = engine.createComponent(TransformComponent.class);
+        tmpPositionVector.set(x,y);
+        transformComponent.setPosition(tmpPositionVector);
+        entity.add(transformComponent);
+        return  entity;
+
+    }
 }

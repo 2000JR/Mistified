@@ -47,6 +47,7 @@ import Systems.CollisionSystem;
 import Systems.PhysicsDebugSystem;
 import Systems.PhysicsSystem;
 import Systems.PlayerControlSystem;
+import Systems.RenderSystem;
 import sun.security.provider.SHA;
 
 import static Helpers.Figures.PPM;
@@ -82,6 +83,8 @@ public class MainGameScreen implements Screen {
     private PhysicsDebugSystem physicsDebugSystem;
     private PlayerControlSystem playerControlSystem;
     private CollisionSystem collisionSystem;
+    private RenderSystem renderSystem;
+
 
     //Entity Manager
     private EntityManager entityManager;
@@ -154,11 +157,15 @@ public class MainGameScreen implements Screen {
         physicsDebugSystem = new PhysicsDebugSystem(world, camera);
         playerControlSystem = new PlayerControlSystem(gameInput);
         collisionSystem = new CollisionSystem(engine, world, game);
+        renderSystem = new RenderSystem(batch, camera);
 
         engine.addSystem(physicsSystem);
         engine.addSystem(physicsDebugSystem);
         engine.addSystem(playerControlSystem);
         engine.addSystem(collisionSystem);
+        // animationSystem runs here
+        engine.addSystem(renderSystem);
+
     }
 
 
@@ -250,7 +257,7 @@ public class MainGameScreen implements Screen {
         //mapRenderer.renderTileLayer((TiledMapTileLayer) map.getLayers().get());
         mapRenderer.setView((OrthographicCamera) gameViewport.getCamera());
         mapRenderer.render();
-        engine.update(delta);
+       engine.update(delta);
 
 
     }
