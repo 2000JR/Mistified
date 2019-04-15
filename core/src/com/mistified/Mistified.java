@@ -74,7 +74,7 @@ public class Mistified extends Game {
 
 	@Override
 	public void create () {
-        Gdx.app.log(TAG, "In create method of main game class");
+        Gdx.app.log(TAG, "In create method of Mistified class");
         screenTable = new Hashtable<SCREENTYPE, Screen>();
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
