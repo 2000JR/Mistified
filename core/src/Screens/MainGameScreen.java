@@ -132,7 +132,7 @@ public class MainGameScreen implements Screen {
 
 //todo need to change map in loaded when implementing sset manager
 
-        map = myAssetManager.getMapAsset("TestMap.tmx");
+        map = myAssetManager.getMapAsset("Mistified.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map, 1/PPM , this.batch);
 
         levelCollisionGenerator.createCollisionLevel(map);

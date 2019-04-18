@@ -37,7 +37,7 @@ public class LoadingScreen implements Screen{
         //Gdx.app.log(TAG, "Loading screen show method");
 
         loadingMapAssets();
-        loadingTextureAtlas();
+       // loadingTextureAtlas();
     }
 
     @Override
