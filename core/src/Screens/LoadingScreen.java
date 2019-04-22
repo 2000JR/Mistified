@@ -37,7 +37,7 @@ public class LoadingScreen implements Screen{
         //Gdx.app.log(TAG, "Loading screen show method");
 
         loadingMapAssets();
-       // loadingTextureAtlas();
+       loadingTextureAtlas();
     }
 
     @Override
@@ -94,7 +94,7 @@ public class LoadingScreen implements Screen{
 
 
     private void loadingMapAssets(){
-        myAssetManager.loadMapAsset("TestMap.tmx");
+        myAssetManager.loadMapAsset("Mistified.tmx");
         Gdx.app.log(TAG, "" + myAssetManager.loadCompleted());
 
         myAssetManager.loadCompleted();

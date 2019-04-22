@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.Pool;
 public class TransformComponent implements Component, Pool.Poolable {
 
     private Vector3 position = new Vector3();
-    private Vector2 scale = new Vector2(11, 11);
+    private Vector2 scale = new Vector2(16, 16);
     private float rotation = 0.0f;
     private boolean isHidden = false;
 

@@ -88,6 +88,7 @@ public class EntityManager {
                 addTextureComponent(entity,entityName);
                addRenderableComponent(entity);
 
+
                 break;
             case "ENEMY":
                 // todo enemy component
@@ -270,11 +271,16 @@ public class EntityManager {
                 fdef.filter.maskBits = Figures.ENEMY | Figures.LEVEL | Figures.GEM;
                 tmpDimension.x = 1;
                 tmpDimension.y = 1;
+                fdef.restitution = 0f;
+                fdef.density = 0;
 
                 bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
                 Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
                 bodyComponent.setActive(true);
-                bodyComponent.getBody().setLinearDamping(3f);
+                bodyComponent.getBody().setLinearDamping(5f);
+
+                bodyComponent.getBody().setFixedRotation(true);
+
                 bodyComponent.getBody().setUserData(entity);
                 break;
 

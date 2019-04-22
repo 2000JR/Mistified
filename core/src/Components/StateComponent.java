@@ -6,11 +6,28 @@ import com.badlogic.gdx.utils.Pool;
 public class StateComponent implements Component, Pool.Poolable {
 
     public enum DIRECTION{
-        UP,DOWN,LEFT,RIGHT,NONE
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+        UPRIGHT,
+        UPLEFT,
+        DOWNRIGHT,
+        DOWNLEFT,
+        NONE
 
     }
     public enum STATE {
-        IDLE,MOVING,TALKING,ATTACKING,HIT,PREPARING_TO_ATTACK,MISTIFIED,DYING,IMOBILE,DEAD
+        IDLE,
+        MOVING,
+        TALKING,
+        ATTACKING,
+        HIT,
+        PREPARING_TO_ATTACK,
+        MISTIFIED,
+        DYING,
+        IMOBILE,
+        DEAD
     }
 
     private STATE state;

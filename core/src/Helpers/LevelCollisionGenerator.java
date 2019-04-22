@@ -116,8 +116,8 @@ public class LevelCollisionGenerator {
             FixtureDef fdef = new FixtureDef();
             fdef.shape = shape;
             fdef.isSensor = false;
-            fdef.density = 1f;
-            fdef.restitution = .5f;
+            fdef.density = 0f;
+            fdef.restitution = 0f;
             fdef.friction = 0;
 
             fdef.filter.categoryBits = Figures.LEVEL;

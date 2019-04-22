@@ -15,7 +15,7 @@ public class GameInput extends InputAdapter implements GestureDetector.GestureLi
     private OrthographicCamera camera;
     private Viewport gameViewport;
     private Vector3 touch;
-    private boolean left, right, up, down;
+    private boolean left, right, up, down,attack;
 
     public GameInput(Viewport gameViewport) {
         super();
@@ -69,6 +69,10 @@ public class GameInput extends InputAdapter implements GestureDetector.GestureLi
                 right = true;
                 keyProcessed = true;
                 break;
+            case Input.Keys.K:
+                attack = true;
+                keyProcessed = true;
+                break;
 
         }
 
@@ -96,6 +100,11 @@ public class GameInput extends InputAdapter implements GestureDetector.GestureLi
                 right = false;
                 keyprocessed = true;
                 break;
+            case Input.Keys.K:
+                attack = false;
+                keyprocessed = false;
+                break;
+
         }
         return super.keyUp(keycode);
     }
@@ -178,6 +187,8 @@ public class GameInput extends InputAdapter implements GestureDetector.GestureLi
     public boolean isDown() {
         return down;
     }
+
+    public boolean isAttack() {return attack;}
 
 
 }
