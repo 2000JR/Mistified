@@ -34,6 +34,7 @@ public class CollisionManager implements ContactListener {
             Entity entity = (Entity) fb.getBody().getUserData();
             entityCollision(entity, fa);
         }
+
     }
     private void entityCollision(Entity entity, Fixture fixture){
         if(fixture.getBody().getUserData() instanceof Entity){

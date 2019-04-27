@@ -18,7 +18,7 @@ public class PhysicsDebugSystem extends IteratingSystem {
 
     public PhysicsDebugSystem(World world, OrthographicCamera camera) {
         super(Family.all(BodyComponent.class).get());
-        box2DDebugRenderer = new Box2DDebugRenderer();
+       // box2DDebugRenderer = new Box2DDebugRenderer();
         this.world = world;
         this.camera = camera;
     }
@@ -28,7 +28,7 @@ public class PhysicsDebugSystem extends IteratingSystem {
     public void update(float deltaTime) {
         super.update(deltaTime);
 
-        box2DDebugRenderer.render(world, camera.combined);
+       // box2DDebugRenderer.render(world, camera.combined);
     }
 
     @Override

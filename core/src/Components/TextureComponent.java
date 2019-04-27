@@ -19,6 +19,8 @@ public class TextureComponent implements Component, Pool.Poolable{
         this.region = region;
     }
 
+
+
     @Override
     public void reset() {
     region = null;

@@ -15,5 +15,6 @@ public class HealthComponent implements Component, Pool.Poolable{
     @Override
     public void reset() {
 
+        health = 3;
     }
 }

@@ -1,0 +1,692 @@
+
+Mistified.png
+size: 1024,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Arrow_In-game
+  rotate: false
+  xy: 614, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+BlueGem
+  rotate: false
+  xy: 596, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Bow_In-game
+  rotate: false
+  xy: 452, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Bow_UI
+  rotate: false
+  xy: 452, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+BrownGem
+  rotate: false
+  xy: 920, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Chest
+  rotate: false
+  xy: 992, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Chest2
+  rotate: false
+  xy: 524, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Chest2_Opened
+  rotate: false
+  xy: 524, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Chest_Opened
+  rotate: false
+  xy: 614, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Deauth
+  rotate: false
+  xy: 740, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+Deauth
+  rotate: false
+  xy: 740, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+Deauth
+  rotate: false
+  xy: 758, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+Deauth
+  rotate: false
+  xy: 542, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+Deauth_dead
+  rotate: false
+  xy: 542, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Deauth
+  rotate: false
+  xy: 542, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+Fireball
+  rotate: false
+  xy: 202, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: 2
+Fireball
+  rotate: false
+  xy: 252, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: 3
+Fireball
+  rotate: false
+  xy: 302, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: 1
+GreenGem
+  rotate: false
+  xy: 506, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+GreyGem
+  rotate: false
+  xy: 866, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+HeartContainer
+  rotate: false
+  xy: 848, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+MistAttack
+  rotate: false
+  xy: 830, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+MistCore
+  rotate: false
+  xy: 2, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: 4
+MistCore
+  rotate: false
+  xy: 102, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: 2
+MistCore
+  rotate: false
+  xy: 152, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: 3
+MistCore
+  rotate: false
+  xy: 352, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: 1
+MistCore_Decay
+  rotate: false
+  xy: 402, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+MistProtectionStone
+  rotate: false
+  xy: 650, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+MonsterDown
+  rotate: false
+  xy: 578, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+MonsterDown
+  rotate: false
+  xy: 578, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+MonsterDown
+  rotate: false
+  xy: 668, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+MonsterDown
+  rotate: false
+  xy: 632, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+MonsterLeft
+  rotate: false
+  xy: 884, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+MonsterLeft
+  rotate: false
+  xy: 884, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+MonsterLeft
+  rotate: false
+  xy: 902, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+MonsterLeft
+  rotate: false
+  xy: 902, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+MonsterRight
+  rotate: false
+  xy: 686, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+MonsterRight
+  rotate: false
+  xy: 686, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+MonsterRight
+  rotate: false
+  xy: 704, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+MonsterRight
+  rotate: false
+  xy: 704, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+MonsterUp
+  rotate: false
+  xy: 866, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+MonsterUp
+  rotate: false
+  xy: 452, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+MonsterUp
+  rotate: false
+  xy: 452, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+MonsterUp
+  rotate: false
+  xy: 470, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+Mysauth
+  rotate: false
+  xy: 776, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+Mysauth
+  rotate: false
+  xy: 794, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+Mysauth
+  rotate: false
+  xy: 812, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+Mysauth
+  rotate: false
+  xy: 812, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+Mysauth
+  rotate: false
+  xy: 650, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+OrangeGem
+  rotate: false
+  xy: 596, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+PlayerDown
+  rotate: false
+  xy: 524, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+PlayerDown
+  rotate: false
+  xy: 650, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+PlayerDown
+  rotate: false
+  xy: 650, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+PlayerDown
+  rotate: false
+  xy: 722, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+PlayerLeft
+  rotate: false
+  xy: 938, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+PlayerLeft
+  rotate: false
+  xy: 938, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+PlayerLeft
+  rotate: false
+  xy: 938, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+PlayerLeft
+  rotate: false
+  xy: 956, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+PlayerRight
+  rotate: false
+  xy: 596, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+PlayerRight
+  rotate: false
+  xy: 596, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+PlayerRight
+  rotate: false
+  xy: 884, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+PlayerRight
+  rotate: false
+  xy: 956, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+PlayerUp
+  rotate: false
+  xy: 632, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+PlayerUp
+  rotate: false
+  xy: 776, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+PlayerUp
+  rotate: false
+  xy: 776, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+PlayerUp
+  rotate: false
+  xy: 686, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+Poof
+  rotate: false
+  xy: 452, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+Poof
+  rotate: false
+  xy: 506, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+Poof
+  rotate: false
+  xy: 758, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+Portal
+  rotate: false
+  xy: 488, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+PurpleGem
+  rotate: false
+  xy: 542, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+RedGem
+  rotate: false
+  xy: 920, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Skeleton
+  rotate: false
+  xy: 974, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+Skeleton
+  rotate: false
+  xy: 974, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+Skeleton
+  rotate: false
+  xy: 974, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+Skeleton
+  rotate: false
+  xy: 488, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+Skeleton_Left
+  rotate: false
+  xy: 722, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Skeleton_Right
+  rotate: false
+  xy: 632, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Spear_In-game
+  rotate: false
+  xy: 578, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Staff_UI
+  rotate: false
+  xy: 560, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+SuperArrow_UI
+  rotate: false
+  xy: 470, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+SuperArrow_In-game
+  rotate: false
+  xy: 470, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+SuperBow_UI
+  rotate: false
+  xy: 992, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+SuperBow_In-game
+  rotate: false
+  xy: 992, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+SuperSpear_In-game
+  rotate: false
+  xy: 794, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+SuperStaff_UI
+  rotate: false
+  xy: 848, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+SuperSword_In-game
+  rotate: false
+  xy: 560, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+SuperSword_UI
+  rotate: false
+  xy: 506, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Sword_In-game
+  rotate: false
+  xy: 668, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Sword_UI
+  rotate: false
+  xy: 614, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Treeboss
+  rotate: false
+  xy: 488, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+Treeboss
+  rotate: false
+  xy: 560, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+Wand
+  rotate: false
+  xy: 578, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Web
+  rotate: false
+  xy: 52, 6
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+YellowGem
+  rotate: false
+  xy: 830, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+arrow_UI
+  rotate: false
+  xy: 470, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+creature
+  rotate: false
+  xy: 668, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+creature
+  rotate: false
+  xy: 686, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2

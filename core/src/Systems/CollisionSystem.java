@@ -57,6 +57,13 @@ public class CollisionSystem extends IteratingSystem {
                 return;
             }
 
+//            if (collidedType.getType() == Figures.GEM && body ==  ){
+//
+//                world.destroyBody(body);
+//                Gdx.app.log(TAG, "Gone");
+//                return;
+//            }
+
             switch (collidedType.getType()) {
 
                 case Figures.ENEMY:
@@ -64,10 +71,16 @@ public class CollisionSystem extends IteratingSystem {
                     break;
 
                 case Figures.LEVEL:
-                    Gdx.app.log(TAG, "LEVEL");
+                    //Gdx.app.log(TAG, "LEVEL");
                     break;
                 case Figures.GEM:
                     Gdx.app.log(TAG,"GEM");
+                    break;
+                case Figures.ITEM:
+                    Gdx.app.log(TAG, "ITEM");
+                    break;
+                case Figures.EQUIPMENT:
+                    Gdx.app.log(TAG, "EQUIPMENT");
                     break;
 
                 case Figures.OTHER:

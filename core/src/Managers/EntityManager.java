@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import Components.AnimationComponent;
 import Components.BodyComponent;
 import Components.CollisionComponent;
+import Components.InventoryComponent;
 import Components.PlayerComponent;
 import Components.RenderableComponent;
 import Components.StateComponent;
@@ -59,7 +60,7 @@ public class EntityManager {
         this.batch = batch;
         this.engine = engine;
         this.myAssetManager = myAssetManager;
-        atlas = myAssetManager.getTextureAsset("Characters/Player/PlayerPng/unnamed.atlas");
+        atlas = myAssetManager.getTextureAsset("Mistified.atlas");
         generator = new BodyGenerator(world);
         tmpPositionVector = new Vector2(Vector2.Zero);
         tmpDimension = new Vector2(Vector2.Zero);
@@ -100,12 +101,121 @@ public class EntityManager {
                 addStateComponent(entity, entityName);
                //addRenderableComponent(entity);
                 break;
+            case "Monster":
+                // todo enemy component
+                Gdx.app.log("ENEMY Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addTypeComponent(entity, entityName);
+                addCollisionComponent(entity);
+                addStateComponent(entity, entityName);
+                //addRenderableComponent(entity);
+                break;
+            case "Skeleton":
+                // todo enemy component
+                Gdx.app.log("ENEMY Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addTypeComponent(entity, entityName);
+                addCollisionComponent(entity);
+                addStateComponent(entity, entityName);
+                //addRenderableComponent(entity);
+                break;
+            case "Creature":
+                // todo enemy component
+                Gdx.app.log("ENEMY Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addTypeComponent(entity, entityName);
+                addCollisionComponent(entity);
+                addStateComponent(entity, entityName);
+                //addRenderableComponent(entity);
+                break;
+            case "MysAuth":
+                // todo enemy component
+                Gdx.app.log("ENEMY Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addTypeComponent(entity, entityName);
+                addCollisionComponent(entity);
+                addStateComponent(entity, entityName);
+                //addRenderableComponent(entity);
+                break;
+            case "Treeboss":
+                // todo enemy component
+                Gdx.app.log("ENEMY Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addTypeComponent(entity, entityName);
+                addCollisionComponent(entity);
+                addStateComponent(entity, entityName);
+                //addRenderableComponent(entity);
+                break;
+            case "MistCore":
+                // todo enemy component
+                Gdx.app.log("ENEMY Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addTypeComponent(entity, entityName);
+                addCollisionComponent(entity);
+                addStateComponent(entity, entityName);
+                //addRenderableComponent(entity);
+                break;
             case "GEM":
                 Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
                 addBodyComponent(entity, entityName, x, y);
                addTransformcomponent(entity,x,y);
-              //addRenderableComponent(entity);
-              //addTextureComponent(entity,entityName);
+              addRenderableComponent(entity);
+              addTextureComponent(entity,entityName);
+                break;
+            case "BlueGem":
+                Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addRenderableComponent(entity);
+                addTextureComponent(entity,entityName);
+                break;
+            case "GreenGem":
+                Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addRenderableComponent(entity);
+                addTextureComponent(entity,entityName);
+                break;
+            case "RedGEM":
+                Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addRenderableComponent(entity);
+                addTextureComponent(entity,entityName);
+                break;
+            case "GreyGem":
+                Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addRenderableComponent(entity);
+                addTextureComponent(entity,entityName);
+                break;
+            case "YellowGem":
+                Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addRenderableComponent(entity);
+                addTextureComponent(entity,entityName);
+                break;
+            case "OrangeGem":
+                Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addRenderableComponent(entity);
+                addTextureComponent(entity,entityName);
+                break;
+            case "BrownGem":
+                Gdx.app.log("GEM Creation", "Position: ("+ x + "," + y + ")" );
+                addBodyComponent(entity, entityName, x, y);
+                addTransformcomponent(entity,x,y);
+                addRenderableComponent(entity);
+                addTextureComponent(entity,entityName);
                 break;
 
 
@@ -189,6 +299,15 @@ public class EntityManager {
         return entity;
     }
 
+//    private Entity addItemComponent ( Entity entity,String entityName){
+//        InventoryComponent inventoryComponent = engine.createComponent(InventoryComponent.class);
+//
+//        switch (entityName){
+//
+//            case "GEM":
+//                inventoryComponent
+//        }
+//    }
     private Entity addTextureComponent(Entity entity,String entityName){
 
         TextureComponent textureComponent = engine.createComponent(TextureComponent.class);
@@ -203,9 +322,9 @@ public class EntityManager {
 
                 break;
 
-//            case "GEM" :
-//                textureComponent.setRegion(new TextureRegion(atlas.findRegion("CHANGE"))); // CHANGE is a placeholder
-//                break;
+            case "GEM" :
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("BlueGem"))); // CHANGE is a placeholder
+                break;
         }
         entity.add(textureComponent);
         return entity;

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import Components.AnimationComponent;
 import Components.BodyComponent;
 import Components.CollisionComponent;
+import Components.InventoryComponent;
 import Components.PlayerComponent;
 import Components.StateComponent;
 import Components.TextureComponent;
@@ -31,6 +32,6 @@ public class Mappers {
 
     public static final ComponentMapper<TextureComponent> textureComponent = ComponentMapper.getFor(TextureComponent.class);
 
-
+    public static final ComponentMapper<InventoryComponent> inventoryComponent = ComponentMapper.getFor(InventoryComponent.class);
 
 }
