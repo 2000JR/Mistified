@@ -121,7 +121,7 @@ public class LevelCollisionGenerator {
             fdef.friction = 0;
 
             fdef.filter.categoryBits = Figures.LEVEL;
-            fdef.filter.maskBits = Figures.PLAYER | Figures.ENEMY;
+            fdef.filter.maskBits = Figures.PLAYER | Figures.ENEMY | Figures.GEM;
 
             Body body = world.createBody(bdef);
             body.createFixture(fdef);
