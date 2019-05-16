@@ -14,6 +14,7 @@ public class StateComponent implements Component, Pool.Poolable {
         UPLEFT,
         DOWNRIGHT,
         DOWNLEFT,
+        TEST,
         NONE
 
     }
@@ -27,7 +28,8 @@ public class StateComponent implements Component, Pool.Poolable {
         MISTIFIED,
         DYING,
         IMOBILE,
-        DEAD
+        DEAD,
+        TESTING
     }
 
     private STATE state;

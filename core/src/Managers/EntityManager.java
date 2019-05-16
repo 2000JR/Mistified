@@ -35,7 +35,12 @@ import Helpers.BodyGenerator;
 import Helpers.Figures;
 
 import static Components.StateComponent.DIRECTION.DOWN;
+import static Components.StateComponent.DIRECTION.LEFT;
+import static Components.StateComponent.DIRECTION.TEST;
+import static Components.StateComponent.DIRECTION.UP;
 import static Components.StateComponent.STATE.IDLE;
+import static Components.StateComponent.STATE.MOVING;
+import static Components.StateComponent.STATE.TESTING;
 import static Helpers.Figures.*;
 
 import Components.StateComponent.*;
@@ -114,7 +119,7 @@ public class EntityManager {
                 addCollisionComponent(entity);
 
                 addStateComponent(entity, entityName);
-                addAnimationComponent(entity, entityName);
+               // addAnimationComponent(entity, entityName);
                 addTextureComponent(entity, entityName);
                 addRenderableComponent(entity);
 
@@ -128,7 +133,7 @@ public class EntityManager {
                 addCollisionComponent(entity);
 
                 addStateComponent(entity, entityName);
-                addAnimationComponent(entity, entityName);
+              //  addAnimationComponent(entity, entityName);
                 addTextureComponent(entity, entityName);
                 addRenderableComponent(entity);
 
@@ -142,7 +147,7 @@ public class EntityManager {
                 addCollisionComponent(entity);
 
                 addStateComponent(entity, entityName);
-                addAnimationComponent(entity, entityName);
+                //addAnimationComponent(entity, entityName);
                 addTextureComponent(entity, entityName);
                 addRenderableComponent(entity);
                 break;
@@ -155,7 +160,7 @@ public class EntityManager {
                 addCollisionComponent(entity);
 
                 addStateComponent(entity, entityName);
-                addAnimationComponent(entity, entityName);
+             //   addAnimationComponent(entity, entityName);
                 addTextureComponent(entity, entityName);
                 addRenderableComponent(entity);
                 break;
@@ -168,7 +173,7 @@ public class EntityManager {
                 addCollisionComponent(entity);
 
                 addStateComponent(entity, entityName);
-                addAnimationComponent(entity, entityName);
+               // addAnimationComponent(entity, entityName);
                 addTextureComponent(entity, entityName);
                 addRenderableComponent(entity);
                 break;
@@ -181,7 +186,7 @@ public class EntityManager {
                 addCollisionComponent(entity);
 
                 addStateComponent(entity, entityName);
-                addAnimationComponent(entity, entityName);
+               // addAnimationComponent(entity, entityName);
                 addTextureComponent(entity, entityName);
                 addRenderableComponent(entity);
                 break;
@@ -287,24 +292,30 @@ public class EntityManager {
                 break;
             case "MONSTER":
                 stateComponent.setDirection(DOWN);
-                stateComponent.setState(IDLE);
+                stateComponent.setState(MOVING);
                 break;
             case "DEAUTH":
+                stateComponent.setDirection(DOWN);
                 stateComponent.setState(IDLE);
                 break;
             case "CREATURE":
+                stateComponent.setDirection(DOWN);
                 stateComponent.setState(IDLE);
                 break;
             case "MISTCORE":
+                stateComponent.setDirection(DOWN);
                 stateComponent.setState(IDLE);
                 break;
             case "MYSAUTH":
+                stateComponent.setDirection(DOWN);
                 stateComponent.setState(IDLE);
                 break;
             case "SKELETON":
+                stateComponent.setDirection(DOWN);
                 stateComponent.setState(IDLE);
                 break;
             case "TREEBOSS":
+                stateComponent.setDirection(DOWN);
                 stateComponent.setState(IDLE);
                 break;
 
@@ -333,14 +344,14 @@ public class EntityManager {
 
                 break;
             case "MONSTER":
-//                animationComponent.addAnimation(AnimationComponent.ANIMATIONSTATE.UP,
-//                        new Animation(0.25f, atlas.findRegions("MonsterUp")))
-//                        .addAnimation(AnimationComponent.ANIMATIONSTATE.DOWN,
-//                                new Animation(0.25f, atlas.findRegions("MonsterDown")))
-//                        .addAnimation(AnimationComponent.ANIMATIONSTATE.LEFT,
-//                                new Animation(0.25f, atlas.findRegions("MonsterLeft")))
-//                        .addAnimation(AnimationComponent.ANIMATIONSTATE.RIGHT,
-//                                new Animation(0.25f, atlas.findRegions("MonsterRight")));
+                animationComponent.addAnimation(AnimationComponent.ANIMATIONSTATE.UP,
+                        new Animation(0.25f, atlas.findRegions("MonsterUp")))
+                        .addAnimation(AnimationComponent.ANIMATIONSTATE.DOWN,
+                                new Animation(0.25f, atlas.findRegions("MonsterDown")))
+                        .addAnimation(AnimationComponent.ANIMATIONSTATE.LEFT,
+                                new Animation(0.25f, atlas.findRegions("MonsterLeft")))
+                        .addAnimation(AnimationComponent.ANIMATIONSTATE.RIGHT,
+                                new Animation(0.25f, atlas.findRegions("MonsterRight")));
                 break;
 
             case "DEAUTH":
@@ -391,34 +402,58 @@ public class EntityManager {
 
                 break;
             case "DEAUTH":
-                textureComponent.setRegion(new TextureRegion(atlas.findRegion("DEAUTH")));
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("Deauth")));
 
                 break;
             case "CREATURE":
-                textureComponent.setRegion(new TextureRegion(atlas.findRegion("CREATURE")));
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("creature")));
 
                 break;
             case "MISTCORE":
-                textureComponent.setRegion(new TextureRegion(atlas.findRegion("MISTCORE")));
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("Mistcore")));
 
                 break;
             case "MYSAUTH":
-                textureComponent.setRegion(new TextureRegion(atlas.findRegion("MYSAUTH")));
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("Mysauth")));
 
                 break;
             case "SKELETON":
-                textureComponent.setRegion(new TextureRegion(atlas.findRegion("SKELETON")));
+             textureComponent.setRegion(new TextureRegion(atlas.findRegion("Skeleton")));
 
                 break;
             case "TREEBOSS":
-                textureComponent.setRegion(new TextureRegion(atlas.findRegion("TREEBOSS")));
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("Treeboss")));
 
                 break;
 
 
             case "GEM":
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("GreyGem"))); // CHANGE is a placeholder
+                break;
+
+            case "BLUEGEM":
                 textureComponent.setRegion(new TextureRegion(atlas.findRegion("BlueGem"))); // CHANGE is a placeholder
                 break;
+            case "REDGEM":
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("RedGem"))); // CHANGE is a placeholder
+                break;
+            case "GREENGEM":
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("GreenGem"))); // CHANGE is a placeholder
+                break;
+            case "YELLOWGEM":
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("YellowGem"))); // CHANGE is a placeholder
+                break;
+            case "ORANGEGEM":
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("OrangeGem"))); // CHANGE is a placeholder
+                break;
+            case "BROWNGEM":
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("BrownGem"))); // CHANGE is a placeholder
+                break;
+            default :
+                textureComponent.setRegion(new TextureRegion(atlas.findRegion("Poof"))); // CHANGE is a placeholder
+                break;
+
+
         }
         entity.add(textureComponent);
         return entity;
@@ -462,6 +497,24 @@ public class EntityManager {
                 break;
 
             case "GEM":
+                type = Figures.GEM;
+                break;
+            case "BLUEGEM":
+                type = Figures.GEM;
+                break;
+            case "REDGEM":
+                type = Figures.GEM;
+                break;
+            case "GREENGEM":
+                type = Figures.GEM;
+                break;
+            case "YELLOWGEM":
+                type = Figures.GEM;
+                break;
+            case "ORANGEGEM":
+                type = Figures.GEM;
+                break;
+            case "BROWNGEM":
                 type = Figures.GEM;
                 break;
             default:
@@ -559,8 +612,8 @@ public class EntityManager {
 
                 fdef.filter.categoryBits = ENEMY;
                 fdef.filter.maskBits = Figures.ENEMY | Figures.LEVEL | Figures.PLAYER | Figures.GEM;
-                tmpDimension.x = 1;
-                tmpDimension.y = 1;
+                tmpDimension.x = 32;
+                tmpDimension.y = 32;
 
                 bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
                 Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
@@ -608,6 +661,90 @@ public class EntityManager {
                 bodyComponent.getBody().setUserData(entity);
                 break;
             case "GEM":
+                fdef.filter.categoryBits = GEM;
+                fdef.filter.maskBits = Figures.LEVEL | Figures.PLAYER;
+                tmpDimension.x = 1;
+                tmpDimension.y = 1;
+
+                bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
+                Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
+                bodyComponent.setActive(true);
+                bodyComponent.getBody().setLinearDamping(0.5f);
+                bodyComponent.getBody().setUserData(entity);
+                break;
+            case "BLUEGEM":
+                fdef.filter.categoryBits = GEM;
+                fdef.filter.maskBits = Figures.LEVEL | Figures.PLAYER;
+                tmpDimension.x = 1;
+                tmpDimension.y = 1;
+
+                bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
+                Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
+                bodyComponent.setActive(true);
+                bodyComponent.getBody().setLinearDamping(0.5f);
+                bodyComponent.getBody().setUserData(entity);
+                break;
+            case "REDGEM":
+                fdef.filter.categoryBits = GEM;
+                fdef.filter.maskBits = Figures.LEVEL | Figures.PLAYER;
+                tmpDimension.x = 1;
+                tmpDimension.y = 1;
+
+                bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
+                Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
+                bodyComponent.setActive(true);
+                bodyComponent.getBody().setLinearDamping(0.5f);
+                bodyComponent.getBody().setUserData(entity);
+                break;
+            case "GREENGEM":
+                fdef.filter.categoryBits = GEM;
+                fdef.filter.maskBits = Figures.LEVEL | Figures.PLAYER;
+                tmpDimension.x = 1;
+                tmpDimension.y = 1;
+
+                bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
+                Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
+                bodyComponent.setActive(true);
+                bodyComponent.getBody().setLinearDamping(0.5f);
+                bodyComponent.getBody().setUserData(entity);
+                break;
+            case "YELLOWGEM":
+                fdef.filter.categoryBits = GEM;
+                fdef.filter.maskBits = Figures.LEVEL | Figures.PLAYER;
+                tmpDimension.x = 1;
+                tmpDimension.y = 1;
+
+                bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
+                Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
+                bodyComponent.setActive(true);
+                bodyComponent.getBody().setLinearDamping(0.5f);
+                bodyComponent.getBody().setUserData(entity);
+                break;
+            case "ORANGEGEM":
+                fdef.filter.categoryBits = GEM;
+                fdef.filter.maskBits = Figures.LEVEL | Figures.PLAYER;
+                tmpDimension.x = 1;
+                tmpDimension.y = 1;
+
+                bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
+                Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
+                bodyComponent.setActive(true);
+                bodyComponent.getBody().setLinearDamping(0.5f);
+                bodyComponent.getBody().setUserData(entity);
+                break;
+            case "BROWNGEM":
+                fdef.filter.categoryBits = GEM;
+                fdef.filter.maskBits = Figures.LEVEL | Figures.PLAYER;
+                tmpDimension.x = 1;
+                tmpDimension.y = 1;
+
+                bodyComponent.setBody(generator.createBody(entity, tmpPositionVector, tmpDimension, BodyDef.BodyType.DynamicBody, 1, fdef));
+                Gdx.app.log("Entity Manager: ", tmpPositionVector.toString() + ": " + tmpDimension.toString());
+                bodyComponent.setActive(true);
+                bodyComponent.getBody().setLinearDamping(0.5f);
+                bodyComponent.getBody().setUserData(entity);
+                break;
+            default:
                 fdef.filter.categoryBits = GEM;
                 fdef.filter.maskBits = Figures.LEVEL | Figures.PLAYER;
                 tmpDimension.x = 1;

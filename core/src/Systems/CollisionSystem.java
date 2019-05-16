@@ -67,24 +67,24 @@ public class CollisionSystem extends IteratingSystem {
             switch (collidedType.getType()) {
 
                 case Figures.ENEMY:
-                    Gdx.app.log(TAG, "ENEMY");
+                  //  Gdx.app.log(TAG, "ENEMY");
                     break;
 
                 case Figures.LEVEL:
                     //Gdx.app.log(TAG, "LEVEL");
                     break;
                 case Figures.GEM:
-                    Gdx.app.log(TAG,"GEM");
+                  //  Gdx.app.log(TAG,"GEM");
                     break;
                 case Figures.ITEM:
-                    Gdx.app.log(TAG, "ITEM");
+                   // Gdx.app.log(TAG, "ITEM");
                     break;
                 case Figures.EQUIPMENT:
-                    Gdx.app.log(TAG, "EQUIPMENT");
+                   // Gdx.app.log(TAG, "EQUIPMENT");
                     break;
 
                 case Figures.OTHER:
-                    Gdx.app.log(TAG, "OTHER");
+                   // Gdx.app.log(TAG, "OTHER");
                     break;
 
 
@@ -106,19 +106,19 @@ public class CollisionSystem extends IteratingSystem {
 
             switch (collidedType.getType()) {
                 case Figures.ENEMY:
-                    Gdx.app.log(TAG, "ENEMY");
+                   // Gdx.app.log(TAG, "ENEMY");
                     break;
                 case Figures.LEVEL:
-                    Gdx.app.log(TAG, "LEVEL");
+                   // Gdx.app.log(TAG, "LEVEL");
                     break;
                 case Figures.PLAYER:
-                    Gdx.app.log(TAG, "PLAYER");
+                  //  Gdx.app.log(TAG, "PLAYER");
                     break;
                 case Figures.OTHER:
-                    Gdx.app.log(TAG, "OTHER");
+                  //  Gdx.app.log(TAG, "OTHER");
                     break;
                 case Figures.NPC:
-                    Gdx.app.log(TAG, "NPC");
+                 //   Gdx.app.log(TAG, "NPC");
                     break;
 
             }

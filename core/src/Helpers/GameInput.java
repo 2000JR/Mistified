@@ -74,23 +74,23 @@ public class GameInput extends InputAdapter implements GestureDetector.GestureLi
                 keyProcessed = true;
                 break;
 
-            case Input.Keys.DPAD_UP:
-                up = true;
-                keyProcessed = true;
-
-                break;
-            case Input.Keys.DPAD_DOWN:
-                down = true;
-                keyProcessed = true;
-                break;
-            case Input.Keys.DPAD_LEFT:
-                left = true;
-                keyProcessed = true;
-                break;
-            case Input.Keys.DPAD_RIGHT:
-                right = true;
-                keyProcessed = true;
-                break;
+//            case Input.Keys.DPAD_UP:
+//                up = true;
+//                keyProcessed = true;
+//
+//                break;
+//            case Input.Keys.DPAD_DOWN:
+//                down = true;
+//                keyProcessed = true;
+//                break;
+//            case Input.Keys.DPAD_LEFT:
+//                left = true;
+//                keyProcessed = true;
+//                break;
+//            case Input.Keys.DPAD_RIGHT:
+//                right = true;
+//                keyProcessed = true;
+//                break;
 
 
         }
@@ -124,22 +124,22 @@ public class GameInput extends InputAdapter implements GestureDetector.GestureLi
                 keyprocessed = true;
                 break;
 
-            case Input.Keys.DPAD_UP:
-                up = false;
-                keyprocessed = true;
-                break;
-            case Input.Keys.DPAD_DOWN:
-                down = false;
-                keyprocessed = true;
-                break;
-            case Input.Keys.DPAD_LEFT:
-                left = true;
-                keyprocessed = true;
-                break;
-            case Input.Keys.DPAD_RIGHT:
-                right = true;
-                keyprocessed = true;
-                break;
+//            case Input.Keys.DPAD_UP:
+//                up = false;
+//                keyprocessed = true;
+//                break;
+//            case Input.Keys.DPAD_DOWN:
+//                down = false;
+//                keyprocessed = true;
+//                break;
+//            case Input.Keys.DPAD_LEFT:
+//                left = true;
+//                keyprocessed = true;
+//                break;
+//            case Input.Keys.DPAD_RIGHT:
+//                right = true;
+//                keyprocessed = true;
+//                break;
 
         }
         return super.keyUp(keycode);

@@ -38,7 +38,12 @@ public class AnimationComponent implements Component, Pool.Poolable {
     }
 
     public void setLooping(boolean islooping){
+
         this.looping = islooping;
+    }
+
+    public boolean isLooping(){
+       return true;
     }
 
     @Override
